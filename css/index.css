@@ -9,12 +9,15 @@ body {
 
 .header_desktop {
     display: flex;
-    
+    justify-content: space-between;
+
+
 }
 
 
 
 
+<<<<<<< HEAD
 /* hero */
 
 .searchbar {
@@ -26,3 +29,7 @@ body {
     width: 250px;
 
 }
+=======
+
+/* hero */
+>>>>>>> affd4be28091cd2e6e3bb37aba37a522a85a9023
