@@ -28,6 +28,10 @@ body {
 
 }
 
+.searchbar input:focus {
+    outline: none;
+}
+
 .hero a {
     background-color: #718b6a;
     padding: 10px 20px;
@@ -36,6 +40,19 @@ body {
     z-index: 1;
     color: white;
     text-decoration: none;
+}
+
+.category-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
 }
 
 
