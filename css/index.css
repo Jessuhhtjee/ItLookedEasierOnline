@@ -2,9 +2,9 @@ body {
     margin: 0;
 }
 
-/* header_desktop */
 
 
+<<<<<<< HEAD
 
 .header_desktop {
     display: flex;
@@ -17,6 +17,8 @@ body {
 
 
 
+=======
+>>>>>>> 1fea41587c1ddd694c2bd713670f6323aa01b1d4
 /* hero */
 
 .searchbar {
@@ -32,6 +34,7 @@ body {
     height: 20px;
 
 }
+<<<<<<< HEAD
 
 .searchbar input {
     width: 100%;
@@ -57,3 +60,5 @@ body {
 
 
 
+=======
+>>>>>>> 1fea41587c1ddd694c2bd713670f6323aa01b1d4
