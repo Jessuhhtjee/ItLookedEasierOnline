@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    width: 100%;
 }
 
 /* header_desktop */
@@ -17,19 +16,44 @@ body {
 
 
 
-<<<<<<< HEAD
+
 /* hero */
 
 .searchbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     background-color: white;
-    width: 250px;
+    margin: auto;
+    width: 400px;
+    border-radius: 25px;
+    padding: 10px 0px 10px 10px;
+    height: 20px;
 
 }
-=======
 
-/* hero */
->>>>>>> affd4be28091cd2e6e3bb37aba37a522a85a9023
+.searchbar input {
+    width: 100%;
+    border: none;
+}
+
+
+.hero-tekst {
+    width: 200px;
+
+}
+
+.hero a {
+    background-color: #718b6a;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
