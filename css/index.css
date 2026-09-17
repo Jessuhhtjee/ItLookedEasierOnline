@@ -1,8 +1,11 @@
 /* header_desktop */
 .header_desktop {
     display: flex;
-    
+    justify-content: space-between;
+
+
 }
+
 
 
 
