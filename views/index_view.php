@@ -8,6 +8,11 @@
     <title>ItLookedEasierOnline</title>
 </head>
 <body>
+<header class="header_desktop">
 
+</header>
+<div class="hero">
+
+</div>
 </body>
 </html>
