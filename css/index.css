@@ -1,5 +1,8 @@
 /* header_desktop */
-
+.header_desktop {
+    display: flex;
+    
+}
 
 
 
