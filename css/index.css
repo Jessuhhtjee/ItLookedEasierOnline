@@ -78,8 +78,46 @@ body {
 .cat-card {
     font-family: Outfit;
 }
+.newsletter_text {
+    font-size: 12px;
+    font-family: Outfit;
+    color: white;
+}
+
+
 .Newsletter {
     background-color: #718b6a;
-    font-size: 12px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
 
+.Newsletter_input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    margin: auto;
+    width: 400px;
+    border-radius: 25px;
+    padding: 10px 0px 10px 10px;
+    height: 20px;
+}
+
+.Newsletter_input input {
+    width: 100%;
+    border: none;
+    font-family: Outfit;
+}
+
+.Newsletter_input a {
+    background-color: #D9A441 ;
+    padding: 10px 35px;
+    border-radius: 25px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-decoration: none;
+    font-family: Outfit;
 }
