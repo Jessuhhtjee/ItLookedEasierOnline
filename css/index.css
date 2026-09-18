@@ -27,6 +27,7 @@ body {
 
 .hero-tekst {
     width: 200px;
+    color: #252525 ;
     
 }
 
@@ -57,6 +58,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #252525;
+    font-family: Outfit;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.category-top a{
+    text-decoration: none;
+    color: #718b6a;
 }
 
 .category-bottom {
@@ -64,6 +74,9 @@ body {
     justify-content: space-around;
     align-items: center;
     text-align: center;
+    color: #252525 ;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 
@@ -111,6 +124,7 @@ body {
     font-family: Outfit;
 }
 
+<<<<<<< HEAD
 .Newsletter_input a {
     background-color: #D9A441 ;
     padding: 10px 35px;
@@ -121,3 +135,7 @@ body {
     text-decoration: none;
     font-family: Outfit;
 }
+=======
+
+
+>>>>>>> cbb1c306475376ebe34e00ce463d4c5fc764c61a
