@@ -27,6 +27,7 @@ body {
 
 .hero-tekst {
     width: 200px;
+    color: #252525 ;
     
 }
 
@@ -57,6 +58,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #252525;
+    font-family: Outfit;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.category-top a{
+    text-decoration: none;
+    color: #718b6a;
 }
 
 .category-bottom {
@@ -64,6 +74,9 @@ body {
     justify-content: space-around;
     align-items: center;
     text-align: center;
+    color: #252525 ;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 
@@ -83,3 +96,6 @@ body {
     font-size: 12px;
 
 }
+
+
+
