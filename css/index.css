@@ -66,6 +66,7 @@ body {
     text-align: center;
 }
 
+<<<<<<< HEAD
 .cat-card i {
     background-color: #e9e9df;
     padding: 25px;
@@ -76,4 +77,9 @@ body {
 
 .cat-card {
     font-family: Outfit;
+=======
+.Newsletter {
+    background-color: #718b6a;
+    font-size: 12px;
+>>>>>>> 27edbda8c16139dec6611b3f7320cb4599c7d173
 }

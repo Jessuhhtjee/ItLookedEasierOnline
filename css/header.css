@@ -23,6 +23,7 @@
 }
 
 nav {
+    padding-left: 80px;
     display: flex;
     gap: 20px;
 }
@@ -33,4 +34,30 @@ nav a {
     font-family: Outfit;
 }
 
+.search_recipes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    margin: auto;
+    width: 250px;
+    border-radius: 25px;
+    padding: 10px 0px 10px 10px;
+    height: 18px;
+}
 
+.search_recipes input {
+    width: 100%;
+    border: none;
+}
+
+.search_recipes a {
+    background-color: #718b6a;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-decoration: none;
+}
