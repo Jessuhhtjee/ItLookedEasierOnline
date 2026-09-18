@@ -2,3 +2,13 @@ body {
     background-color: #FAF8F2 ;
     
 }
+
+@font-face {
+    font-family: Sora;
+    src: url(../font/Sora-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Outfit;
+    src: url(../font/Outfit-VariableFont_wght.ttf);
+}

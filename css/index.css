@@ -13,6 +13,7 @@ body {
     border-radius: 25px;
     padding: 10px 0px 10px 10px;
     height: 20px;
+    
 
 }
 
@@ -20,12 +21,21 @@ body {
 .searchbar input {
     width: 100%;
     border: none;
+    font-family: Outfit;
 }
 
 
 .hero-tekst {
     width: 200px;
+    
+}
 
+.hero-tekst h1 {
+    font-family: Sora;
+}
+
+.hero-tekst p {
+    font-family: Outfit;
 }
 
 .searchbar input:focus {
@@ -40,6 +50,7 @@ body {
     z-index: 1;
     color: white;
     text-decoration: none;
+    font-family: Outfit;
 }
 
 .category-top {
@@ -55,3 +66,14 @@ body {
     text-align: center;
 }
 
+.cat-card i {
+    background-color: #e9e9df;
+    padding: 25px;
+    border-radius: 50%;
+    color: #718b6a;
+    font-size: 20px;
+}
+
+.cat-card {
+    font-family: Outfit;
+}
