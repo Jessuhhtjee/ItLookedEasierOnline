@@ -9,14 +9,12 @@ body {
     gap: 15px;
     background-color: white;
     margin: auto;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     border-radius: 25px;
-    padding: 10px 0px 10px 10px;
+    padding: 10px;
     height: 20px;
-    
-
 }
-
 
 .searchbar input {
     width: 100%;
@@ -24,11 +22,9 @@ body {
     font-family: Outfit;
 }
 
-
 .hero-tekst {
     width: 200px;
-    color: #252525 ;
-    
+    color: #252525;
 }
 
 .hero-tekst h1 {
@@ -64,7 +60,7 @@ body {
     margin-right: 20px;
 }
 
-.category-top a{
+.category-top a {
     text-decoration: none;
     color: #718b6a;
 }
@@ -74,11 +70,12 @@ body {
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    color: #252525 ;
+    color: #252525;
     margin-left: 10px;
     margin-right: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-
 
 .cat-card i {
     background-color: #e9e9df;
@@ -91,18 +88,21 @@ body {
 .cat-card {
     font-family: Outfit;
 }
+
 .newsletter_text {
     font-size: 12px;
     font-family: Outfit;
     color: white;
 }
 
-
 .Newsletter {
     background-color: #718b6a;
     padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .Newsletter_input {
@@ -112,9 +112,10 @@ body {
     gap: 15px;
     background-color: white;
     margin: auto;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     border-radius: 25px;
-    padding: 10px 0px 10px 10px;
+    padding: 10px;
     height: 20px;
 }
 
@@ -124,9 +125,12 @@ body {
     font-family: Outfit;
 }
 
+.Newsletter_input input:focus {
+    outline: none;
+}
 
 .Newsletter_input a {
-    background-color: #D9A441 ;
+    background-color: #D9A441;
     padding: 10px 35px;
     border-radius: 25px;
     position: relative;
@@ -134,4 +138,46 @@ body {
     color: white;
     text-decoration: none;
     font-family: Outfit;
+    white-space: nowrap;
+}
+
+.Popular_Recipes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.PR_card {
+    background-color: white;
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+}
+
+@media (max-width: 900px) {
+    .Popular_Recipes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .Popular_Recipes {
+        grid-template-columns: 1fr;
+        width: 80%;
+    }
+
+    .PR_card {
+        height: 400px;
+    }
+
+    .Newsletter {
+        flex-direction: column;
+    }
+
+    .Newsletter_input {
+        width: 90%;
+    }
 }
