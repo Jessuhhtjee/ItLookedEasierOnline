@@ -12,7 +12,7 @@ body {
     width: 90%;
     max-width: 400px;
     border-radius: 25px;
-    padding: 10px;
+    padding: 10px 0px 10px 10px;
     height: 20px;
 }
 
@@ -20,6 +20,10 @@ body {
     width: 100%;
     border: none;
     font-family: Outfit;
+}
+
+.hero {
+height: 331px;
 }
 
 .hero-tekst {
@@ -48,6 +52,26 @@ body {
     color: white;
     text-decoration: none;
     font-family: Outfit;
+}
+
+.hero-bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.stats-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #252525;
+    font-family: Outfit;
+}
+
+.stats-card i {
+    color: #D9A441;
 }
 
 .category-top {
@@ -115,7 +139,7 @@ body {
     width: 90%;
     max-width: 400px;
     border-radius: 25px;
-    padding: 10px;
+    padding: 10px 0px 10px 10px;
     height: 20px;
 }
 
@@ -180,4 +204,11 @@ body {
     .Newsletter_input {
         width: 90%;
     }
+
+    .stats-card {
+        font-size: 15px;
+        gap: 5px;
+    }
+
+
 }
