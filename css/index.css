@@ -23,16 +23,22 @@ body {
 }
 
 .hero {
-height: 331px;
+height: 500px;
+background-image: url(../Images/Kookwebsite\ Hero\ Afbeelding.png);
+background-position: right;
+background-repeat: no-repeat;
+
 }
 
 .hero-tekst {
-    width: 200px;
+    width: 500px;
     color: #252525;
+    margin-left: 100px;
 }
 
 .hero-tekst h1 {
     font-family: Sora;
+    font-size: 60px;
 }
 
 .hero-tekst p {
@@ -56,9 +62,11 @@ height: 331px;
 
 .hero-bottom {
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     align-items: center;
     flex-direction: row;
+    gap: 100px;
+    margin-left: 100px;
 }
 
 .stats-card {
@@ -80,8 +88,8 @@ height: 331px;
     align-items: center;
     color: #252525;
     font-family: Outfit;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .category-top a {
@@ -121,25 +129,25 @@ height: 331px;
 
 .Newsletter {
     background-color: #718b6a;
-    padding: 10px;
+    padding: 20px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-sizing: border-box;
 }
 
 .Newsletter_input {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 15px;
     background-color: white;
-    margin: auto;
-    width: 90%;
+    width: 40%;
     max-width: 400px;
     border-radius: 25px;
-    padding: 10px 0px 10px 10px;
+    padding: 10px 0 10px 10px;
     height: 20px;
 }
 
@@ -185,6 +193,15 @@ height: 331px;
     .Popular_Recipes {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .cat-desktop {
+        display: none;
+    }
+
+    .hero {
+        background-image: none;
+        height: 300px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -197,18 +214,37 @@ height: 331px;
         height: 400px;
     }
 
+    .stats-card {
+        display: none;
+    }
+
+    .hero-tekst {
+        margin-left: 10px;
+        width: 200px;
+    }
+
+    .hero-tekst h1 {
+        font-size: 30px;
+    }
+
+    .hero {
+        background-size: 1000px;
+    }
+
+    .cat-snacks {
+        display: none;
+    }
+
     .Newsletter {
         flex-direction: column;
+        gap: 20px;
+        padding: 20px;
     }
 
     .Newsletter_input {
         width: 90%;
     }
 
-    .stats-card {
-        font-size: 15px;
-        gap: 5px;
-    }
 
 
 }
