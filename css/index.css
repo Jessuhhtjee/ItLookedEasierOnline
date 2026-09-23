@@ -178,7 +178,7 @@ background-repeat: no-repeat;
 
 .Popular_Recipes {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     width: 90%;
     margin: 30px auto;
