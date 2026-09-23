@@ -1,0 +1,28 @@
+.container_login {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.Login_box {
+    background: white;
+    height: 600px;
+    width: 600px;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-submit {
+    background: #718B6A ;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-family: Outfit;
+}
+

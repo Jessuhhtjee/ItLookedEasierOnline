@@ -3,6 +3,9 @@ footer {
     justify-content: space-between;
     align-items: center;
     font-family: Outfit;
+
+    margin-right: 60px;
+    margin-left: 60px;
 }
 
 .nav-footer {
