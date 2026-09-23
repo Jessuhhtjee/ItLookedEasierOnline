@@ -69,6 +69,44 @@ nav a {
     outline: none;
 }
 
+.header_phone {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: #e9e9df;
+    height: 100px;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-radius: 10px 10px 0 0;
+}
+
+.header_phone a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    flex: 1;
+
+    text-decoration: none;
+    text-align: center;
+    color: #718B6A;
+    font-family: Outfit;
+}
+
+.header_phone a i {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+
+
 
 @media (max-width: 600px) {
     nav {
@@ -82,5 +120,11 @@ nav a {
     .header_desktop {
         margin-left: 30px;
         margin-right: 30px;
+    }
+}
+
+@media (min-width: 600px) {
+    .header_phone {
+        display: none;
     }
 }
