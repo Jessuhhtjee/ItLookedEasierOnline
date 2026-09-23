@@ -119,6 +119,9 @@ background-repeat: no-repeat;
 
 .cat-card {
     font-family: Outfit;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
 }
 
 .newsletter_text {
@@ -178,15 +181,55 @@ background-repeat: no-repeat;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     width: 90%;
-    max-width: 1200px;
     margin: 30px auto;
+    justify-items: center;
+}
+
+
+.pr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Outfit;
+    color: #252525;
 }
 
 .PR_card {
     background-color: white;
-    width: 100%;
-    height: 300px;
+    width: 330px;
+    height: 370px;
     border-radius: 15px;
+    font-family: Outfit;
+    
+    color: #77736D ;
+}
+
+.PR_card h2 {
+    font-family: Sora;
+    color: #252525;
+}
+
+.PR_card h2, p {
+    margin-left: 20px;
+}
+
+.PR_card img {
+    width: 100%;
+    border-radius: 15px;
+    height: 200px;
+}
+.PR-bot {
+    display: flex;
+    justify-content: space-around;
+    
+}
+.pr-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 @media (max-width: 900px) {
@@ -210,9 +253,6 @@ background-repeat: no-repeat;
         width: 80%;
     }
 
-    .PR_card {
-        height: 400px;
-    }
 
     .stats-card {
         display: none;
@@ -243,6 +283,10 @@ background-repeat: no-repeat;
 
     .Newsletter_input {
         width: 90%;
+    }
+
+    .category-top {
+        margin: 10px;
     }
 
 
