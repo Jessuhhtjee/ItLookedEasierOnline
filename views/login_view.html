@@ -18,18 +18,21 @@
 <body>
     <div class="container_login">
         <div class="Login_box">
+            <a id="Back_arrow" href="index_view.html"><i class="fa-solid fa-arrow-left"></i></a>
+            <h1 id="Login_text" >Log in</h1>
             <form id="login-form" method="post">
     <div>
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" autocomplete="email" required>
+        <label for="email">E-mail</label> <br>
+        <input type="email" id="email" placeholder="Emailaddress" name="email" autocomplete="email" required>
     </div>
 
     <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" autocomplete="current-password" required>
-    </div>
+        <label for="password">Password</label> <br>
+        <input type="password" id="password" placeholder="Password" name="password" autocomplete="current-password" required>
+    </div> 
 
     <button type="submit" id="login-submit">Sign in</button>
+    <a href="" id="Register_button">Register</a>
         </form>
         </div>
 

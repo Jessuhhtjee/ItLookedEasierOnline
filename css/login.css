@@ -15,14 +15,68 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    position: relative;
 }
 
-#login-submit {
-    background: #718B6A ;
+#login-submit,
+#Register_button {
+    background: #718B6A;
     color: white;
     border: none;
     padding: 12px 40px;
     border-radius: 25px;
     font-family: Outfit;
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
 }
 
+
+#login-form {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+#login-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form label {
+    font-family: Outfit;
+    margin-bottom: 5px;
+}
+
+#login-form input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background-color: #FAF8F2;
+    border-radius: 25px;
+    padding: 10px 15px;
+    height: 40px;
+    font-family: Outfit;
+}
+
+#login-form input:focus {
+    outline: none;
+}
+
+#Login_text {
+    font-family: Sora;
+}
+
+#Back_arrow {
+    position: absolute;
+    top: 25px;
+    left: 30px; 
+    font-size: 20px;
+    color: #718B6A;
+    
+}
