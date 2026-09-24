@@ -1,3 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
 }
@@ -10,14 +21,17 @@ body {
     background-color: white;
     margin: auto;
     width: 90%;
-    max-width: 400px;
+    max-width: 700px;
     border-radius: 25px;
-    padding: 10px 0px 10px 10px;
+    padding: 19px 0px 19px 20px;
     height: 20px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
 }
 
 .searchbar input {
     width: 100%;
+    min-width: 0;
     border: none;
     font-family: Outfit;
 }
@@ -27,11 +41,13 @@ height: 500px;
 background-image: url(../Images/Kookwebsite\ Hero\ Afbeelding.png);
 background-position: right;
 background-repeat: no-repeat;
-
+max-width: 100%;
+overflow: hidden;
 }
 
 .hero-tekst {
     width: 500px;
+    max-width: calc(100% - 20px);
     color: #252525;
     margin-left: 100px;
 }
@@ -51,22 +67,29 @@ background-repeat: no-repeat;
 
 .hero a {
     background-color: #718b6a;
-    padding: 10px 20px;
+    padding: 10px 50px;
     border-radius: 25px;
     position: relative;
     z-index: 1;
     color: white;
     text-decoration: none;
     font-family: Outfit;
+    font-size: 15px;
+    white-space: nowrap;
 }
 
 .hero-bottom {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 100px;
     margin-left: 100px;
+    background-color: #e9e9df55;
+    width: 800px;
+    max-width: calc(100% - 100px);
+    border-radius: 25px;
+    height: 40px;
 }
 
 .stats-card {
@@ -76,6 +99,7 @@ background-repeat: no-repeat;
     gap: 10px;
     color: #252525;
     font-family: Outfit;
+    white-space: nowrap;
 }
 
 .stats-card i {
@@ -121,7 +145,6 @@ background-repeat: no-repeat;
     font-family: Outfit;
     justify-content: center;
     align-items: center;
-    align-items: center;
 }
 
 .newsletter_text {
@@ -140,6 +163,7 @@ background-repeat: no-repeat;
     margin: 0 auto;
     border-radius: 15px;
     box-sizing: border-box;
+    max-width: 100%;
 }
 
 .Newsletter_input {
@@ -150,12 +174,14 @@ background-repeat: no-repeat;
     width: 40%;
     max-width: 400px;
     border-radius: 25px;
-    padding: 10px 0 10px 10px;
+    padding: 20px 0px 20px 20px;
     height: 20px;
+    box-sizing: border-box;
 }
 
 .Newsletter_input input {
     width: 100%;
+    min-width: 0;
     border: none;
     font-family: Outfit;
 }
@@ -185,7 +211,6 @@ background-repeat: no-repeat;
     justify-items: center;
 }
 
-
 .pr {
     display: flex;
     justify-content: center;
@@ -197,12 +222,13 @@ background-repeat: no-repeat;
 
 .PR_card {
     background-color: white;
-    width: 330px;
+    width: 100%;
+    max-width: 330px;
     height: 370px;
     border-radius: 15px;
     font-family: Outfit;
-    
-    color: #77736D ;
+    color: #77736D;
+    overflow: hidden;
 }
 
 .PR_card h2 {
@@ -212,18 +238,24 @@ background-repeat: no-repeat;
 
 .PR_card h2, p {
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .PR_card img {
+    display: block;
     width: 100%;
+    max-width: 100%;
     border-radius: 15px;
     height: 200px;
+    object-fit: cover;
 }
+
 .PR-bot {
     display: flex;
     justify-content: space-around;
-    
+    max-width: 100%;
 }
+
 .pr-stats {
     display: flex;
     flex-direction: row;
@@ -232,9 +264,41 @@ background-repeat: no-repeat;
     gap: 10px;
 }
 
+@media (max-width: 1600px) {
+        .Popular_Recipes {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .PR_card:nth-child(5) {
+        display: none;
+    }
+    
+}
+
+@media (max-width: 1100px) {
+        .Popular_Recipes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .PR_card:nth-child(4) {
+        display: none;
+    }
+
+    .PR_card h2, p {
+    margin-left: 20px;
+    margin-bottom: 60px;
+}
+    
+}
+
 @media (max-width: 900px) {
-    .Popular_Recipes {
+
+        .Popular_Recipes {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .PR_card:nth-child(3) {
+        display: none;
     }
 
     .cat-desktop {
@@ -243,7 +307,16 @@ background-repeat: no-repeat;
 
     .hero {
         background-image: none;
-        height: 300px;
+    }
+
+    .hero-bottom {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    .pr-stats {
+        font-size: 15px;
     }
 }
 
@@ -253,22 +326,49 @@ background-repeat: no-repeat;
         width: 80%;
     }
 
+    .PR_card:nth-child(4),
+    .PR_card:nth-child(5) {
+        display: none;
+    }
+
+     .PR_card:nth-child(3) {
+        display: block;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
 
     .stats-card {
         display: none;
     }
 
+    .hero-bottom {
+        display: none;
+    }
+
     .hero-tekst {
         margin-left: 10px;
-        width: 200px;
+        width: auto;
+        max-width: calc(100% - 20px);
     }
 
     .hero-tekst h1 {
-        font-size: 30px;
+        font-size: 40px;
     }
 
     .hero {
         background-size: 1000px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .searchbar {
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .cat-snacks {
@@ -279,16 +379,22 @@ background-repeat: no-repeat;
         flex-direction: column;
         gap: 20px;
         padding: 20px;
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .Newsletter_input {
         width: 90%;
+        max-width: 100%;
     }
 
     .category-top {
         margin: 10px;
     }
 
-
-
+    .PR_card {
+        width: 100%;
+        max-width: 330px;
+    }
 }
