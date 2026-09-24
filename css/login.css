@@ -1,26 +1,83 @@
+body {
+    margin: 0;
+    background-color: #EDEBE4;
+}
+
 .container_login {
     display: flex;
     justify-content: center;
-    height: 100vh;
     align-items: center;
+    height: 100vh;
 }
 
 .Login_box {
     background: white;
-    height: 600px;
     width: 600px;
+    height: 600px;
     max-width: 90%;
     max-height: 90%;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     position: relative;
 }
 
-#login-submit,
-#Register_button {
+#login-section,
+#register-section {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#register-section {
+    display: none;
+}
+
+#Login_text {
+    font-family: Sora;
+    margin-bottom: 40px;
+}
+
+#login-form,
+#register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#login-form > div,
+#register-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form label,
+#register-form label {
+    font-family: Outfit;
+    margin-bottom: 5px;
+}
+
+#login-form input,
+#register-form input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background-color: #FAF8F2;
+    border-radius: 25px;
+    padding: 10px 15px;
+    height: 40px;
+    font-family: Outfit;
+}
+
+#login-form input:focus,
+#register-form input:focus {
+    outline: none;
+}
+
+#login-submit {
     background: #718B6A;
     color: white;
     border: none;
@@ -32,51 +89,55 @@
     text-decoration: none;
     text-align: center;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
-
-#login-form {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+#login-submit:hover {
+    background: #5f7759;
 }
 
-
-#login-form > div {
-    display: flex;
-    flex-direction: column;
-}
-
-#login-form label {
-    font-family: Outfit;
-    margin-bottom: 5px;
-}
-
-#login-form input {
-    width: 100%;
-    box-sizing: border-box;
+#Register_button,
+#Back_to_login {
+    background: none;
     border: none;
-    background-color: #FAF8F2;
-    border-radius: 25px;
-    padding: 10px 15px;
-    height: 40px;
+    color: #718B6A;
     font-family: Outfit;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: -10px;
+    text-decoration: none;
 }
 
-#login-form input:focus {
-    outline: none;
-}
-
-#Login_text {
-    font-family: Sora;
+#Register_button:hover,
+#Back_to_login:hover {
+    text-decoration: underline;
 }
 
 #Back_arrow {
     position: absolute;
     top: 25px;
-    left: 30px; 
+    left: 30px;
     font-size: 20px;
     color: #718B6A;
-    
+    text-decoration: none;
+}
+
+#Back_arrow:hover {
+    color: #5f7759;
+}
+
+@media (max-width: 600px) {
+    .Login_box {
+        width: 90%;
+        height: 90%;
+    }
+
+    #login-section,
+    #register-section {
+        width: 80%;
+    }
+
+    #Login_text {
+        font-size: 28px;
+    }
 }

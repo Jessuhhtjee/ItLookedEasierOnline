@@ -18,24 +18,105 @@
 <body>
     <div class="container_login">
         <div class="Login_box">
-            <a id="Back_arrow" href="index_view.html"><i class="fa-solid fa-arrow-left"></i></a>
-            <h1 id="Login_text" >Log in</h1>
-            <form id="login-form" method="post">
-    <div>
-        <label for="email">E-mail</label> <br>
-        <input type="email" id="email" placeholder="Emailaddress" name="email" autocomplete="email" required>
-    </div>
 
-    <div>
-        <label for="password">Password</label> <br>
-        <input type="password" id="password" placeholder="Password" name="password" autocomplete="current-password" required>
-    </div> 
+            <a id="Back_arrow" href="index_view.html">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
 
-    <button type="submit" id="login-submit">Sign in</button>
-    <a href="" id="Register_button">Register</a>
-        </form>
+            <div id="login-section">
+                <h1 id="Login_text">Log in</h1>
+
+                <form id="login-form" method="post">
+
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Emailaddress" 
+                            name="email" 
+                            autocomplete="email" 
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            placeholder="Password" 
+                            name="password" 
+                            autocomplete="current-password" 
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" id="login-submit">
+                        Sign in
+                    </button>
+
+                    <button type="button" id="Register_button">
+                        Don't have an account yet? Sign up now!
+                    </button>
+                </form>
+            </div>
+
+
+            <div id="register-section">
+                <h1 id="Login_text">Register</h1>
+
+                <form id="register-form" method="post">
+
+                    <div>
+                        <label for="username">Username</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            placeholder="Username" 
+                            name="username" 
+                            autocomplete="username" 
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="register-email">E-mail</label>
+                        <input 
+                            type="email" 
+                            id="register-email" 
+                            placeholder="Emailaddress" 
+                            name="email" 
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="register-password">Password</label>
+                        <input 
+                            type="password" 
+                            id="register-password" 
+                            placeholder="Password" 
+                            name="password" 
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" id="login-submit">
+                        Create account
+                    </button>
+
+                    <button type="button" id="Back_to_login">
+                        Already have an account? Log in
+                    </button>
+
+                </form>
+            </div>
+
         </div>
-
     </div>
+
+    <script src="../js/login_switch.js"></script>
 </body>
+
 </html>
