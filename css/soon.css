@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.sooncontainer {
+    display: flex;
+    justify-content: center;
+    height: 84vh;
+    align-items: center;
+    margin: 0;
+}
+
+.sooncontainer .container {
+    background: white;
+    height: 600px;
+    width: 900px;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+
+
+#title {
+    font-family: Sora;
+    color: #252525;
+}
+
+#soon {
+    font-family: Outfit;
+    color: #77736D;
+}
+
+strong {
+    color: #718B6A;
+    font-family: Sora;
+    font-size: 25px;
+}

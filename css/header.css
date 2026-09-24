@@ -48,6 +48,10 @@ nav a {
     align-items: center;
 }
 
+#wishlist {
+    color: #718B6A;
+}
+
 .header-right {
     display: flex;
     align-items: center;

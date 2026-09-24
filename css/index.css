@@ -139,6 +139,7 @@ overflow: hidden;
     border-radius: 50%;
     color: #718b6a;
     font-size: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .cat-card {
@@ -229,6 +230,7 @@ overflow: hidden;
     font-family: Outfit;
     color: #77736D;
     overflow: hidden;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .PR_card h2 {
