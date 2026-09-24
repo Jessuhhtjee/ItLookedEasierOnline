@@ -114,6 +114,7 @@ overflow: hidden;
     font-family: Outfit;
     margin-left: 100px;
     margin-right: 100px;
+    font-size: 18px;
 }
 
 .category-top a {
@@ -146,6 +147,8 @@ overflow: hidden;
     font-family: Outfit;
     justify-content: center;
     align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .newsletter_text {
@@ -238,10 +241,11 @@ overflow: hidden;
     color: #252525;
 }
 
-.PR_card h2, p {
+.PR_card h2,
+.PR_card p {
     margin-left: 20px;
-    margin-bottom: 10px;
 }
+
 
 .PR_card img {
     display: block;
@@ -286,12 +290,13 @@ overflow: hidden;
         display: none;
     }
 
-    .PR_card h2, p {
+    .PR_card h2,
+.PR_card p {
     margin-left: 20px;
-    margin-bottom: 60px;
+}
+
 }
     
-}
 
 @media (max-width: 900px) {
 
