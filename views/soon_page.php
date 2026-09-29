@@ -15,11 +15,11 @@
 <header class="header_desktop">
     <div class="header-left">
     <div class="header_logo">
-        <a href="index_view.html"><img src="../Images/Logo.png" alt="" width="70px"></a>
+        <a href="index.php"><img src="../Images/Logo.png" alt="" width="70px"></a>
     </div>
     <nav>
-        <a href="index_view.html">Home</a>
-        <a href="recipes_view.html">Recipes</a>
+        <a href="index.php">Home</a>
+        <a href="views/recipes_view.php">Recipes</a>
         <a href="">Community</a>
     </nav>
 </div>
@@ -30,8 +30,8 @@
     </div>
 
 
-        <a id="wishlist" href="soon_page.html"><i class="fa-regular fa-heart"></i></a>
-        <a href="login_view.html" id="Login_button">Sign in</a>
+        <a id="wishlist" href="soon_page.php"><i class="fa-regular fa-heart"></i></a>
+        <a href="login_view.php" id="Login_button">Sign in</a>
 
 </header>
 <header class="header_phone">

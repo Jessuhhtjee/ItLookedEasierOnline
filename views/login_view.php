@@ -19,14 +19,15 @@
     <div class="container_login">
         <div class="Login_box">
 
-            <a id="Back_arrow" href="index_view.html">
+            <a id="Back_arrow" href="../index.php">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
 
             <div id="login-section">
                 <h1 id="Login_text">Log in</h1>
 
-                <form id="login-form" method="post">
+                <form id="login-form" method="post" action="../login-register.php">
+                    <input type="hidden" name="action" value="login">
 
                     <div>
                         <label for="email">E-mail</label>
@@ -66,7 +67,8 @@
             <div id="register-section">
                 <h1 id="Login_text">Register</h1>
 
-                <form id="register-form" method="post">
+                <form id="register-form" method="post" action="../login-register.php">
+                    <input type="hidden" name="action" value="register">
 
                     <div>
                         <label for="username">Username</label>
@@ -102,7 +104,7 @@
                         >
                     </div>
 
-                    <button type="submit" id="login-submit">
+                    <button type="submit" id="register-submit">
                         Create account
                     </button>
 

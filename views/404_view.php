@@ -19,7 +19,7 @@
         <div class="error_text">
             <h1>404</h1>
             <h3>This page might have moved or does not exist anymore...</h3>
-            <a id="Back_link" href="index_view.html">Back to Home</a>
+            <a id="Back_link" href="index_view.php">Back to Home</a>
         </div>
     </div>
 </body>
