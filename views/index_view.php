@@ -49,7 +49,7 @@
                 <i class="fa-regular fa-heart"></i>
             </a>
 
-            <a href="views/login_view.php" id="Login_button">
+            <a href="login-register.php" id="Login_button">
                 Sign in
             </a>
 

@@ -1,5 +1,6 @@
 <?php
 include 'includes/config.php';
+include 'views/login_view.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST["action"];

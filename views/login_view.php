@@ -6,27 +6,27 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ItLookedEasierOnline_Login</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-          <link rel="stylesheet" href="../css/header.css">
-          <link rel="stylesheet" href="../css/footer.css">
-          <link rel="stylesheet" href="../css/login.css">
+          <link rel="stylesheet" href="./css/header.css">
+          <link rel="stylesheet" href="./css/footer.css">
+          <link rel="stylesheet" href="./css/login.css">
 
 </head>
 <body>
     <div class="container_login">
         <div class="Login_box">
 
-            <a id="Back_arrow" href="../index.php">
+            <a id="Back_arrow" href="./index.php">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
 
             <div id="login-section">
                 <h1 id="Login_text">Log in</h1>
 
-                <form id="login-form" method="post" action="../login-register.php">
+                <form id="login-form" method="post" action="./login-register.php">
                     <input type="hidden" name="action" value="login">
 
                     <div>
@@ -67,7 +67,7 @@
             <div id="register-section">
                 <h1 id="Login_text">Register</h1>
 
-                <form id="register-form" method="post" action="../login-register.php">
+                <form id="register-form" method="post" action="./login-register.php">
                     <input type="hidden" name="action" value="register">
 
                     <div>
