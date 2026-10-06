@@ -4,6 +4,7 @@ footer {
     align-items: center;
     font-family: Outfit;
 
+
     margin-right: 60px;
     margin-left: 60px;
 }
@@ -30,4 +31,11 @@ footer i {
 .Social_media {
     display: flex;
     gap: 35px;
+}
+
+
+@media (max-width: 900px) {
+    footer {
+        display: none;
+    }
 }

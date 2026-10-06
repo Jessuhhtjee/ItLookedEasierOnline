@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ItLookedEasierOnline | Profile</title>
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 <header class="header_desktop">
@@ -47,7 +47,7 @@
         </a>
 
     </div>
-
+    
 </header>
 
 
@@ -94,7 +94,20 @@
 
         <a href="" class="add-btn">+ add recipes</a>
     </div>
-    <div class="profile-right">2</div>
+    <div class="profile-right">
+        <div class="profile-stats">
+            Profile stats
+            <img class="profile-picture" src="../Images/card-template.jpg" alt="" >
+        </div>
+
+        <div class="my-recipes">
+            My recipes
+        </div>
+
+        <div class="saved-recipes">
+            Saved recipes
+        </div>
+    </div>
 </div>
 
 <footer>

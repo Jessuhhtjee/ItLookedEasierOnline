@@ -16,40 +16,72 @@ body {
 .profile {
     width: 100%;
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 250px auto;
+    color: #252525;
+    font-family: Outfit;
 }
 
-.profile-left, .profile-right {
-    border: 1px solid black;
-}
+
 .profile-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #f5f2ec;
+    border-radius: 0px 10px 10px 0px;
 }
 
 .profile-option {
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 180px;
+    height: 50px;
     text-decoration: none;
-    gap: 10px;
-    text-align: left;
     color: #252525;
 }
+
+.profile-option i {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.profile-option p {
+    margin: 0;
+}
+
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
 
 .add-btn {
     background-color: #718b6a;
     text-decoration: none;
     color: white;
     font-family: Outfit;
-    padding: 10px 50px;
+    padding: 15px 40px;
     border-radius: 25px;
 }
 
 @media (max-width: 900px) {
     .profile-left {
         display: none;
+    }
+
+    .profile {
+        grid-template-columns: auto;
     }
 }
