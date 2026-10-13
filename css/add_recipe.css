@@ -1,0 +1,216 @@
+.create {
+    max-width: 1350px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: Outfit;
+    color: #171c23;
+}
+
+.create-header {
+    margin-bottom: 20px;
+}
+
+.create-header h1 {
+    margin-bottom: 8px;
+    font-size: 32px;
+}
+
+.create-header p {
+    color: #555;
+}
+
+.create-form {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 15px;
+}
+
+.create-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.create-card {
+    padding: 24px;
+    background: #fffefa;
+    border-radius: 12px;
+    border: 1px solid #eeede7;
+}
+
+.create-card h2 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.create-card p {
+    color: #555;
+    font-size: 13px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.create input,
+.create textarea,
+.create select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dddcd6;
+    border-radius: 8px;
+    font-size: 13px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.create textarea {
+    resize: vertical;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 14px;
+}
+
+.ingredients-heading,
+.ingredient-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 25px;
+    gap: 10px;
+    align-items: center;
+}
+
+.ingredients-heading {
+    padding: 10px;
+    background: #f0f0e9;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ingredient-row {
+    margin: 8px 0;
+}
+
+.ingredient-row input {
+    min-width: 0;
+}
+
+.remove-btn {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.add-btn {
+    margin-top: 10px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    background: #dce1d3;
+    color: #29382b;
+    cursor: pointer;
+}
+
+.upload-area {
+    min-height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #c9cec1;
+    border-radius: 9px;
+    background: #f1f2eb;
+    text-align: center;
+    cursor: pointer;
+}
+
+#recipe-image {
+    margin-top: 10px;
+}
+
+#image-preview {
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+}
+
+.step-row {
+    display: grid;
+    grid-template-columns: 32px 1fr 20px;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dce1d3;
+}
+
+.create-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.publish-btn {
+    padding: 14px 35px;
+    border: none;
+    border-radius: 10px;
+    background: #596c53;
+    color: white;
+    cursor: pointer;
+}
+
+.publish-btn:hover {
+    background: #465640;
+}
+
+@media (max-width: 800px) {
+    .create-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .create-footer {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .create {
+        padding: 0 12px;
+    }
+
+    .create-card {
+        padding: 16px;
+    }
+
+    .form-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .create-header h1 {
+        font-size: 26px;
+    }
+}
