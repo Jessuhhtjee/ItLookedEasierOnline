@@ -4,6 +4,7 @@ session_start();
 require_once 'includes/config.php';
 
 $message = '';
+$show_register = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -13,50 +14,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($action === "register") {
 
+            $show_register = true;
+
             $username = trim($_POST["username"] ?? "");
             $email = trim($_POST["email"] ?? "");
             $password = $_POST["password"] ?? "";
 
             if ($username === "" || $email === "" || $password === "") {
-
                 $message = "Vul alle velden in.";
-
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $message = "Voer een geldig e-mailadres in.";
             } else {
 
-                $hashed_password = password_hash(
-                    $password,
-                    PASSWORD_DEFAULT
-                );
-
                 $check_email = $conn->prepare(
-                    "SELECT Email FROM Ileo_Users WHERE Email = ?"
+                    "SELECT `ID` FROM `Ileo_Users` WHERE `Email` = ?"
                 );
-
                 $check_email->execute([$email]);
 
                 if ($check_email->fetch()) {
-
                     $message = "This email is already registered";
-
                 } else {
 
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
                     $stmt = $conn->prepare(
-                        "INSERT INTO Ileo_Users (Username, Email, Password)
+                        "INSERT INTO `Ileo_Users` (`Username`, `Email`, `Password`)
                          VALUES (?, ?, ?)"
                     );
 
-                    if ($stmt->execute([
+                    $stmt->execute([
                         $username,
                         $email,
                         $hashed_password
-                    ])) {
+                    ]);
 
-                        $message = "Account created. You can now log in.";
-
-                    } else {
-
-                        $message = "Error creating account";
-                    }
+                    $message = "Account created. You can now log in.";
+                    $show_register = false;
                 }
             }
 
@@ -65,26 +58,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $email = trim($_POST["email"] ?? "");
             $password = $_POST["password"] ?? "";
 
-            $stmt = $conn->prepare(
-                "SELECT * FROM Ileo_Users WHERE Email = ?"
-            );
-
-            $stmt->execute([$email]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // TIJDELIJKE TEST: controleer of de gebruiker bestaat.
-            if (!$user) {
-
-                $message = "GEBRUIKER NIET GEVONDEN IN DATABASE";
-
+            if ($email === "" || $password === "") {
+                $message = "Vul alle velden in.";
             } else {
 
-                $message = "GEBRUIKER GEVONDEN\n";
-                $message .= "ID: " . $user["ID"] . "\n";
+                $stmt = $conn->prepare(
+                    "SELECT `ID`, `Username`, `Email`, `Password`
+                     FROM `Ileo_Users`
+                     WHERE `Email` = ?"
+                );
+                $stmt->execute([$email]);
+                $user = $stmt->fetch();
 
-                if (password_verify($password, $user["Password"])) {
-
-                    // Login succesvol.
+                if ($user && password_verify($password, $user["Password"])) {
                     session_regenerate_id(true);
 
                     $_SESSION["user_id"] = $user["ID"];
@@ -93,25 +79,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     header("Location: profile.php");
                     exit;
-
-                } else {
-
-                    $message .= "Wachtwoordcontrole: FALSE";
                 }
+
+                $message = "Ongeldige e-mail of wachtwoord.";
             }
 
         } else {
-
             $message = "Ongeldige actie.";
         }
 
     } catch (PDOException $e) {
-
         error_log($e->getMessage());
         $message = "Databasefout: " . $e->getMessage();
     }
 }
 
-// HTML pas laden nadat PHP klaar is.
 include 'views/login_view.php';
-?>
