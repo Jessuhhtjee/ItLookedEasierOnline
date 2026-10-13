@@ -33,7 +33,7 @@
             <nav>
                 <a href="index.php">Home</a>
                 <a href="views/recipes_view.php">Recipes</a>
-                <a href="">Community</a>
+                <a href="views/soon_page.php">Community</a>
             </nav>
 
         </div>

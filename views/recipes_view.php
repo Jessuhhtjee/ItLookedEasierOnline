@@ -31,7 +31,7 @@
         <nav>
             <a href="../index.php">Home</a>
             <a href="recipes_view.php">Recipes</a>
-            <a href="">Community</a>
+            <a href="soon_page.php">Community</a>
         </nav>
 
     </div>
@@ -48,7 +48,7 @@
         </a>
 
         <a href="views/login_view.php" id="Login_button">
-            Sign in
+            Profile
         </a>
 
     </div>

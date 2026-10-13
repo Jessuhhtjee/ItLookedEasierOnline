@@ -15,12 +15,12 @@
 <header class="header_desktop">
     <div class="header-left">
     <div class="header_logo">
-        <a href="index.php"><img src="../Images/Logo.png" alt="" width="70px"></a>
+        <a href="../index.php"><img src="../Images/Logo.png" alt="" width="70px"></a>
     </div>
     <nav>
-        <a href="index.php">Home</a>
-        <a href="views/recipes_view.php">Recipes</a>
-        <a href="">Community</a>
+        <a href="../index.php">Home</a>
+        <a href="recipes_view.php">Recipes</a>
+        <a href="soon_page.php">Community</a>
     </nav>
 </div>
     <div class="header-right">

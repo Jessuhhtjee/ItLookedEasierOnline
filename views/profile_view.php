@@ -6,11 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ItLookedEasierOnline | Profile</title>
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="./css/footer.css">
 </head>
 <body>
 <header class="header_desktop">
@@ -18,15 +18,15 @@
     <div class="header-left">
 
         <div class="header_logo">
-            <a href="../index.php">
-                <img src="../Images/Logo.png" alt="" width="70px">
+            <a href="./index.php">
+                <img src="./Images/Logo.png" alt="" width="70px">
             </a>
         </div>
 
         <nav>
-            <a href="../index.php">Home</a>
+            <a href="./index.php">Home</a>
             <a href="recipes_view.php">Recipes</a>
-            <a href="">Community</a>
+            <a href="soon_page.php">Community</a>
         </nav>
 
     </div>
@@ -43,7 +43,7 @@
         </a>
 
         <a href="login-register.php" id="Login_button">
-            Sign in
+            Profile
         </a>
 
     </div>
@@ -96,7 +96,7 @@
     </div>
     <div class="profile-right">
         <div class="profile-stats">
-            <img class="profile-picture" src="../Images/card-template.jpg" alt="" >
+            <img class="profile-picture" src="./Images/card-template.jpg" alt="" >
             <div class="profil-tekst">
             <h1>Username</h1>
             <p>Hier nog iets van tekst ofzo? een of andere inspirerende quote ofzo?</p>
@@ -111,28 +111,28 @@
             </div>
             <div class="mr-lower">
                 <div class="mr-card">
-                    <img src="../Images/card-template.jpg" alt="">
+                    <img src="./Images/card-template.jpg" alt="">
                     <h4>The Classic hamburger</h4>
                     <p>A quick and easy hamburger recipe that defintely took longer</p>
                     <p class="mr-stats">30 min | Medium</p>
                 </div>
 
                 <div class="mr-card">
-                    <img src="../Images/card-template.jpg" alt="">
+                    <img src="./Images/card-template.jpg" alt="">
                     <h4>The Classic hamburger</h4>
                     <p>A quick and easy hamburger recipe that defintely took longer</p>
                     <p class="mr-stats">30 min | Medium</p>
                 </div>
 
                 <div class="mr-card">
-                    <img src="../Images/card-template.jpg" alt="">
+                    <img src="./Images/card-template.jpg" alt="">
                     <h4>The Classic hamburger</h4>
                     <p>A quick and easy hamburger recipe that defintely took longer</p>
                     <p class="mr-stats">30 min | Medium</p>
                 </div>
 
                 <div class="mr-card">
-                    <img src="../Images/card-template.jpg" alt="">
+                    <img src="./Images/card-template.jpg" alt="">
                     <h4>The Classic hamburger</h4>
                     <p>A quick and easy hamburger recipe that defintely took longer</p>
                     <p class="mr-stats">30 min | Medium</p>
