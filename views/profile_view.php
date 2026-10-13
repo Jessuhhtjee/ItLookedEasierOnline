@@ -18,14 +18,14 @@
     <div class="header-left">
 
         <div class="header_logo">
-            <a href="index.php">
+            <a href="../index.php">
                 <img src="../Images/Logo.png" alt="" width="70px">
             </a>
         </div>
 
         <nav>
-            <a href="index.php">Home</a>
-            <a href="views/recipes_view.php">Recipes</a>
+            <a href="../index.php">Home</a>
+            <a href="recipes_view.php">Recipes</a>
             <a href="">Community</a>
         </nav>
 

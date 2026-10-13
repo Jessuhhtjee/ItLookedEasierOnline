@@ -49,8 +49,8 @@
                 <i class="fa-regular fa-heart"></i>
             </a>
 
-            <a href="login-register.php" id="Login_button">
-                Sign in
+            <a id="Login_button" href="<?= isset($_SESSION['user_id']) ? 'profile.php' : 'login-register.php' ?>">
+                Profile
             </a>
 
         </div>

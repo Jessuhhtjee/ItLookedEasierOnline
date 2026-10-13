@@ -104,7 +104,7 @@
                         >
                     </div>
 
-                    <button type="submit" id="register-submit">
+                    <button type="submit" id="login-submit">
                         Create account
                     </button>
 
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <script src="../js/login_switch.js"></script>
+    <script src="./js/login_switch.js" defer></script>
 </body>
 
 </html>
