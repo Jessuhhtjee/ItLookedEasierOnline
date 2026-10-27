@@ -25,8 +25,8 @@
 
         <nav>
             <a href="./index.php">Home</a>
-            <a href="recipes_view.php">Recipes</a>
-            <a href="soon_page.php">Community</a>
+            <a href="./recipes.php">Recipes</a>
+            <a href="./soon.php">Community</a>
         </nav>
 
     </div>
@@ -38,11 +38,11 @@
             <input type="text" placeholder="Search recipes...">
         </div>
 
-        <a id="wishlist" href="soon_page.php">
+        <a id="wishlist" href="./soon.php">
             <i class="fa-regular fa-heart"></i>
         </a>
 
-        <a href="login-register.php" id="Login_button">
+        <a href="./profile.php" id="Login_button">
             Profile
         </a>
 
@@ -53,17 +53,17 @@
 
 <header class="header_phone">
 
-    <a href="">
+    <a href="./index.php">
         <i class="fa-solid fa-house"></i>
         <p>Home</p>
     </a>
 
-    <a href="">
+    <a href="./recipes.php">
         <i class="fa-solid fa-magnifying-glass"></i>
         <p>Recipes</p>
     </a>
 
-    <a href="">
+    <a href="./profile.php">
         <i class="fa-solid fa-user"></i>
         <p>Profile</p>
     </a>
@@ -71,89 +71,105 @@
 </header>
 
 <div class="profile">
-    <div class="profile-left">
-        <a href="" class="profile-option">
+    <aside class="profile-left">
+        <p class="profile-nav-label">Account</p>
+
+        <a href="./profile.php" class="profile-option active">
             <i class="fa-regular fa-user"></i>
             <p>Profile</p>
         </a>
 
-        <a href="" class="profile-option">
+        <a href="./profile.php#my-recipes" class="profile-option">
             <i class="fa-solid fa-book"></i>
             <p>My recipes</p>
         </a>
 
-        <a href="" class="profile-option">
+        <a href="./soon.php" class="profile-option">
             <i class="fa-regular fa-heart"></i>
             <p>Saved recipes</p>
         </a>
 
-        <a href="" class="profile-option">
+        <a href="./soon.php" class="profile-option">
             <i class="fa-solid fa-gear"></i>
             <p>Settings</p>
         </a>
 
-        <a href="" class="add-btn">+ Add Recipe</a>
-    </div>
+        <a href="./add-recipe.php" class="add-btn sidebar-add">+ Add Recipe</a>
+    </aside>
+
     <div class="profile-right">
-        <div class="profile-stats">
-            <img class="profile-picture" src="./Images/card-template.jpg" alt="" >
-            <div class="profil-tekst">
-            <h1>Username</h1>
-            <p>Hier nog iets van tekst ofzo? een of andere inspirerende quote ofzo?</p>
+        <section class="profile-hero">
+            <div class="profile-stats">
+                <img class="profile-picture" src="./Images/card-template.jpg" alt="">
+                <div class="profil-tekst">
+                    <p class="profile-eyebrow">Your kitchen corner</p>
+                    <h1><?= e($_SESSION['username'] ?? 'Username') ?></h1>
+                    <p>Share recipes that looked easier online.</p>
+                    <div class="profile-meta">
+                        <span><?= count($my_recipes) ?> recipe<?= count($my_recipes) === 1 ? '' : 's' ?></span>
+                        <span><?= e($_SESSION['email'] ?? '') ?></span>
+                    </div>
+                </div>
             </div>
+        </section>
 
-        </div>
-
-        <div class="my-recipes">
+        <section class="my-recipes" id="my-recipes">
             <div class="mr-upper">
-                <h3>My Recipes</h3>
-                <a class="add-btn" href="">+ Add Recipe</a>
+                <div>
+                    <p class="section-eyebrow">COOKBOOK</p>
+                    <h3>My Recipes</h3>
+                </div>
+                <a class="add-btn" href="./add-recipe.php">+ Add Recipe</a>
             </div>
+
             <div class="mr-lower">
-                <div class="mr-card">
-                    <img src="./Images/card-template.jpg" alt="">
-                    <h4>The Classic hamburger</h4>
-                    <p>A quick and easy hamburger recipe that defintely took longer</p>
-                    <p class="mr-stats">30 min | Medium</p>
-                </div>
-
-                <div class="mr-card">
-                    <img src="./Images/card-template.jpg" alt="">
-                    <h4>The Classic hamburger</h4>
-                    <p>A quick and easy hamburger recipe that defintely took longer</p>
-                    <p class="mr-stats">30 min | Medium</p>
-                </div>
-
-                <div class="mr-card">
-                    <img src="./Images/card-template.jpg" alt="">
-                    <h4>The Classic hamburger</h4>
-                    <p>A quick and easy hamburger recipe that defintely took longer</p>
-                    <p class="mr-stats">30 min | Medium</p>
-                </div>
-
-                <div class="mr-card">
-                    <img src="./Images/card-template.jpg" alt="">
-                    <h4>The Classic hamburger</h4>
-                    <p>A quick and easy hamburger recipe that defintely took longer</p>
-                    <p class="mr-stats">30 min | Medium</p>
-                </div>
+                <?php if (empty($my_recipes)): ?>
+                    <div class="empty-recipes">
+                        <i class="fa-solid fa-utensils"></i>
+                        <h4>No recipes yet</h4>
+                        <p>Your first “it looked easier online” moment starts here.</p>
+                        <a class="add-btn" href="./add-recipe.php">Create a recipe</a>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($my_recipes as $recipe): ?>
+                        <a class="mr-card" href="./recipe.php?id=<?= (int) $recipe['id'] ?>">
+                            <img src="./<?= e(recipe_image_src($recipe['image'] ?? null)) ?>" alt="">
+                            <div class="mr-card-body">
+                                <h4><?= e($recipe['title']) ?></h4>
+                                <p><?= e($recipe['description'] ?: 'No description yet.') ?></p>
+                                <p class="mr-stats">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <?= e(format_prep_time($recipe['prep_time'] ?? null)) ?>
+                                    <span>·</span>
+                                    <?= e(format_label($recipe['difficulty'] ?? null) ?: '—') ?>
+                                </p>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
-        </div>
+        </section>
 
-        <div class="create-recipe">
+        <section class="create-recipe">
             <div class="cr-left">
-            <i class="fa-solid fa-plus"></i>
-            <div class="tekst-create">
-                <h3>Create new recipe</h3>
-                <p>Share your favorite (or experimental) recipe with the community</p>
+                <i class="fa-solid fa-plus"></i>
+                <div class="tekst-create">
+                    <h3>Create new recipe</h3>
+                    <p>Share your favorite (or experimental) recipe with the community.</p>
+                </div>
             </div>
-            </div>
-            <a class="add-btn" href="">Add Recipe</a>
-        </div>
+            <a class="add-btn" href="./add-recipe.php">Add Recipe</a>
+        </section>
 
-        <div class="saved-recipes">
-            Saved recipes
-        </div>
+        <section class="saved-recipes">
+            <div class="saved-header">
+                <div>
+                    <p class="section-eyebrow">COMING SOON</p>
+                    <h3>Saved recipes</h3>
+                </div>
+            </div>
+            <p class="saved-copy">Wishlist recipes will land here once saving is ready.</p>
+        </section>
     </div>
 </div>
 
@@ -161,7 +177,7 @@
 
     <div class="Footer_logo">
 
-        <img src="../Images/Logo.png"
+        <img src="./Images/Logo.png"
              alt=""
              width="100px">
 
@@ -170,9 +186,9 @@
 
     <div class="nav-footer">
 
-        <a href="">Home</a>
-        <a href="">Recipes</a>
-        <a href="">Community</a>
+        <a href="./index.php">Home</a>
+        <a href="./recipes.php">Recipes</a>
+        <a href="./soon.php">Community</a>
 
     </div>
 

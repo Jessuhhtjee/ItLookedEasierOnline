@@ -8,12 +8,13 @@
 
     <title>ItLookedEasierOnline_Recipes</title>
 
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/recipes.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/recipes.css">
+    <script src="./js/recipes_filter.js" defer></script>
 </head>
 
 <body>
@@ -23,15 +24,15 @@
     <div class="header-left">
 
         <div class="header_logo">
-            <a href="../index.php">
-                <img src="../Images/Logo.png" alt="" width="70px">
+            <a href="./index.php">
+                <img src="./Images/Logo.png" alt="" width="70px">
             </a>
         </div>
 
         <nav>
-            <a href="../index.php">Home</a>
-            <a href="recipes_view.php">Recipes</a>
-            <a href="soon_page.php">Community</a>
+            <a href="./index.php">Home</a>
+            <a href="./recipes.php">Recipes</a>
+            <a href="./soon.php">Community</a>
         </nav>
 
     </div>
@@ -43,11 +44,11 @@
             <input type="text" placeholder="Search recipes...">
         </div>
 
-        <a id="wishlist" href="soon_page.php">
+        <a id="wishlist" href="./soon.php">
             <i class="fa-regular fa-heart"></i>
         </a>
 
-        <a href="views/login_view.php" id="Login_button">
+        <a href="<?= isset($_SESSION['user_id']) ? './profile.php' : './login-register.php' ?>" id="Login_button">
             Profile
         </a>
 
@@ -95,33 +96,6 @@
 
         </div>
 
-
-        <div class="recipes-sort">
-
-            <label for="sort">
-                Sort by
-            </label>
-
-            <select id="sort">
-                <option value="popular">
-                    Most popular
-                </option>
-
-                <option value="newest">
-                    Newest
-                </option>
-
-                <option value="shortest">
-                    Shortest
-                </option>
-
-                <option value="longest">
-                    Longest
-                </option>
-            </select>
-
-        </div>
-
     </section>
 
 
@@ -138,42 +112,42 @@
                 </h3>
 
                 <label>
-                    <input type="checkbox" name="category" value="all">
+                    <input type="checkbox" name="category" value="all" <?= empty($active_category) ? 'checked' : '' ?>>
                     <span>All Recipes</span>
                 </label>
 
                 <label>
-                    <input type="checkbox" name="category" value="breakfast">
+                    <input type="checkbox" name="category" value="breakfast" <?= ($active_category ?? '') === 'breakfast' ? 'checked' : '' ?>>
                     <span>Breakfast</span>
                 </label>
 
                 <label>
-                    <input type="checkbox" name="category" value="lunch">
+                    <input type="checkbox" name="category" value="lunch" <?= ($active_category ?? '') === 'lunch' ? 'checked' : '' ?>>
                     <span>Lunch</span>
                 </label>
 
                 <label>
-                    <input type="checkbox" name="category" value="dinner">
+                    <input type="checkbox" name="category" value="dinner" <?= ($active_category ?? '') === 'dinner' ? 'checked' : '' ?>>
                     <span>Dinner</span>
                 </label>
 
                 <label>
-                    <input type="checkbox" name="category" value="snacks">
+                    <input type="checkbox" name="category" value="snacks" <?= ($active_category ?? '') === 'snacks' ? 'checked' : '' ?>>
                     <span>Snacks</span>
                 </label>
 
                 <label>
-                    <input type="checkbox" name="category" value="desserts">
+                    <input type="checkbox" name="category" value="dessert" <?= ($active_category ?? '') === 'dessert' ? 'checked' : '' ?>>
                     <span>Desserts</span>
                 </label>
 
                 <label>
-                    <input type="checkbox" name="category" value="vegetarian">
+                    <input type="checkbox" name="category" value="vegetarian" <?= ($active_category ?? '') === 'vegetarian' ? 'checked' : '' ?>>
                     <span>Vegetarian</span>
                 </label>
 
                 <label>
-                    <input type="checkbox" name="category" value="quick">
+                    <input type="checkbox" name="category" value="quick&easy" <?= ($active_category ?? '') === 'quick&easy' ? 'checked' : '' ?>>
                     <span>Quick &amp; Easy</span>
                 </label>
 
@@ -231,7 +205,7 @@
                 </label>
 
                 <label>
-                    <input type="checkbox" name="difficulty" value="impossible">
+                    <input type="checkbox" name="difficulty" value="apparentlyimpossible">
                     <span>Apparently Impossible</span>
                 </label>
 
@@ -294,69 +268,46 @@
             <div class="recipes-results-header">
 
                 <h2>
-                    128 recipes found
+                    <?= count($recipes) ?> recipe<?= count($recipes) === 1 ? '' : 's' ?> found
                 </h2>
 
-                <div class="view-options">
-
-                    <button type="button" class="grid-view">
-                        <i class="fa-solid fa-grip"></i>
-                    </button>
-
-                    <button type="button" class="list-view">
-                        <i class="fa-solid fa-list"></i>
-                    </button>
-
-                </div>
 
             </div>
 
 
             <div class="recipes-grid">
-
+                <?php if (empty($recipes)): ?>
+                    <p>No recipes yet. <a href="./add-recipe.php">Add the first one</a>.</p>
+                <?php else: ?>
+                    <?php foreach ($recipes as $recipe): ?>
+                        <a class="PR_card"
+                           href="./recipe.php?id=<?= (int) $recipe['id'] ?>"
+                           style="text-decoration:none;color:inherit;display:block;"
+                           data-title="<?= e($recipe['title']) ?>"
+                           data-description="<?= e($recipe['description'] ?? '') ?>"
+                           data-category="<?= e($recipe['category'] ?? '') ?>"
+                           data-prep-time="<?= e($recipe['prep_time'] ?? '') ?>"
+                           data-difficulty="<?= e($recipe['difficulty'] ?? '') ?>"
+                           data-dietary="<?= e($recipe['dietary_preference'] ?? '') ?>"
+                           data-created="<?= e(isset($recipe['created_at']) ? (string) strtotime($recipe['created_at']) : '0') ?>">
+                            <img src="./<?= e(recipe_image_src($recipe['image'] ?? null)) ?>" alt="<?= e($recipe['title']) ?>">
+                            <h2><?= e($recipe['title']) ?></h2>
+                            <p><?= e($recipe['description'] ?: 'No description yet.') ?></p>
+                            <div class="PR-bot">
+                                <div class="pr-stats">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p><?= e(format_prep_time($recipe['prep_time'] ?? null)) ?></p>
+                                </div>
+                                <div class="pr-stats">
+                                    <i class="fa-solid fa-trophy"></i>
+                                    <p><?= e(format_label($recipe['difficulty'] ?? null) ?: '—') ?></p>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <p class="recipes-empty-filter" hidden>No recipes match your filters.</p>
             </div>
-
-
-            <nav class="recipes-pagination">
-
-                <button type="button">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-
-                <button type="button" class="active">
-                    1
-                </button>
-
-                <button type="button">
-                    2
-                </button>
-
-                <button type="button">
-                    3
-                </button>
-
-                <button type="button">
-                    4
-                </button>
-
-                <button type="button">
-                    5
-                </button>
-
-                <span>
-                    ...
-                </span>
-
-                <button type="button">
-                    13
-                </button>
-
-                <button type="button">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-            </nav>
-
 
         </div>
 
@@ -407,7 +358,7 @@
     <div class="Footer_logo">
 
         <img
-                src="../Images/Logo.png"
+                src="./Images/Logo.png"
                 alt=""
                 width="100px"
         >
@@ -417,15 +368,15 @@
 
     <div class="nav-footer">
 
-        <a href="">
+        <a href="./index.php">
             Home
         </a>
 
-        <a href="">
+        <a href="./recipes.php">
             Recipes
         </a>
 
-        <a href="">
+        <a href="./soon.php">
             Community
         </a>
 

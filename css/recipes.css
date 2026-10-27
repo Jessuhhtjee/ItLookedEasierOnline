@@ -205,31 +205,27 @@
     font-weight: 600;
 }
 
-.view-options {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.view-options button {
-    width: 42px;
-    height: 35px;
-    border: 1px solid #e9e6df;
-    border-radius: 11px;
-    background: white;
-    color: #252525;
-    cursor: pointer;
-}
-
-.view-options .grid-view {
-    background: #718b6a;
-    color: white;
-}
-
 .recipes-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 15px;
+}
+
+.recipes-grid .PR_card.is-filtered-out,
+.recipes-grid .recipe-card.is-filtered-out {
+    display: none !important;
+}
+
+.recipes-empty-filter {
+    grid-column: 1 / -1;
+    margin: 10px 0 0;
+    padding: 28px 18px;
+    border: 1px dashed #cfc9bb;
+    border-radius: 12px;
+    background: #f7f6ef;
+    color: #77736D;
+    text-align: center;
+    font-size: 15px;
 }
 
 .recipes-grid > * {

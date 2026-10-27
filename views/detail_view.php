@@ -1,20 +1,28 @@
+<?php
+$ingredient_count = count($ingredients);
+$published = !empty($recipe['created_at'])
+    ? date('F j, Y', strtotime($recipe['created_at']))
+    : '';
+$category_label = format_label($recipe['category'] ?? null);
+$dietary_label = format_label($recipe['dietary_preference'] ?? null);
+?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Perfect Pancakes | ItLookedEasierOnline</title>
+    <title><?= e($recipe['title']) ?> | ItLookedEasierOnline</title>
 
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/detail.css">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <script src="../js/recipe_detail.js" defer></script>
+    <script src="./js/recipe_detail.js" defer></script>
 </head>
 
 <body>
@@ -22,15 +30,15 @@
 <header class="header_desktop">
     <div class="header-left">
         <div class="header_logo">
-            <a href="../index.php">
-                <img src="../Images/Logo.png" alt="" width="70px">
+            <a href="./index.php">
+                <img src="./Images/Logo.png" alt="" width="70px">
             </a>
         </div>
 
         <nav>
-            <a href="../index.php">Home</a>
-            <a href="recipes_view.php">Recipes</a>
-            <a href="">Community</a>
+            <a href="./index.php">Home</a>
+            <a href="./recipes.php">Recipes</a>
+            <a href="./soon.php">Community</a>
         </nav>
     </div>
 
@@ -40,28 +48,28 @@
             <input type="text" placeholder="Search recipes...">
         </div>
 
-        <a id="wishlist" href="soon_page.php">
+        <a id="wishlist" href="./soon.php">
             <i class="fa-regular fa-heart"></i>
         </a>
 
-        <a href="login-register.php" id="Login_button">
-            Sign in
+        <a href="<?= isset($_SESSION['user_id']) ? './profile.php' : './login-register.php' ?>" id="Login_button">
+            <?= isset($_SESSION['user_id']) ? 'Profile' : 'Sign in' ?>
         </a>
     </div>
 </header>
 
 <header class="header_phone">
-    <a href="../index.php">
+    <a href="./index.php">
         <i class="fa-solid fa-house"></i>
         <p>Home</p>
     </a>
 
-    <a href="recipes_view.php">
+    <a href="./recipes.php">
         <i class="fa-solid fa-magnifying-glass"></i>
         <p>Recipes</p>
     </a>
 
-    <a href="login-register.php">
+    <a href="<?= isset($_SESSION['user_id']) ? './profile.php' : './login-register.php' ?>">
         <i class="fa-solid fa-user"></i>
         <p>Profile</p>
     </a>
@@ -69,19 +77,12 @@
 
 <main class="recipe-detail">
 
-    <div class="recipe-breadcrumb">
-        <a href="../index.php">Home</a>
-        <i class="fa-solid fa-chevron-right"></i>
-        <a href="recipes_view.php">Recipes</a>
-        <i class="fa-solid fa-chevron-right"></i>
-        <span>The Perfect Pancakes</span>
-    </div>
 
     <section class="recipe-hero">
 
         <div class="recipe-hero-image">
-            <img src="../Images/pancakes.jpg"
-                 alt="A stack of homemade pancakes with fresh berries">
+            <img src="./<?= e(recipe_image_src($recipe['image'] ?? null)) ?>"
+                 alt="<?= e($recipe['title']) ?>">
 
             <button type="button"
                     class="recipe-save"
@@ -95,19 +96,22 @@
         <div class="recipe-hero-content">
 
             <div class="recipe-tags">
-                <span>Breakfast</span>
-                <span>Vegetarian</span>
+                <?php if ($category_label): ?>
+                    <span><?= e($category_label) ?></span>
+                <?php endif; ?>
+                <?php if ($dietary_label): ?>
+                    <span><?= e($dietary_label) ?></span>
+                <?php endif; ?>
             </div>
 
             <p class="recipe-eyebrow">
                 GOOD FOOD. REAL EXPECTATIONS.
             </p>
 
-            <h1>The Perfect Pancakes</h1>
+            <h1><?= e($recipe['title']) ?></h1>
 
             <p class="recipe-description">
-                Fluffy, golden pancakes topped with fresh berries.
-                Simple ingredients, a little patience, and a very good breakfast.
+                <?= e($recipe['description'] ?: 'No description yet.') ?>
             </p>
 
             <div class="recipe-author">
@@ -116,8 +120,10 @@
                 </div>
 
                 <div>
-                    <p class="author-name">Recipe by Alex</p>
-                    <p class="author-date">Published October 12, 2026</p>
+                    <p class="author-name">Recipe by <?= e($recipe['author'] ?? 'Unknown') ?></p>
+                    <?php if ($published): ?>
+                        <p class="author-date">Published <?= e($published) ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -127,15 +133,15 @@
                     <i class="fa-regular fa-clock"></i>
                     <div>
                         <span>Prep time</span>
-                        <strong>10 min</strong>
+                        <strong><?= e(format_prep_time($recipe['prep_time'] ?? null)) ?></strong>
                     </div>
                 </div>
 
                 <div class="recipe-stat">
-                    <i class="fa-solid fa-fire-burner"></i>
+                    <i class="fa-solid fa-utensils"></i>
                     <div>
-                        <span>Cook time</span>
-                        <strong>15 min</strong>
+                        <span>Servings</span>
+                        <strong><?= e($recipe['servings'] !== null ? (string) $recipe['servings'] : '—') ?></strong>
                     </div>
                 </div>
 
@@ -143,16 +149,12 @@
                     <i class="fa-solid fa-chart-simple"></i>
                     <div>
                         <span>Difficulty</span>
-                        <strong>Easy</strong>
+                        <strong><?= e(format_label($recipe['difficulty'] ?? null) ?: '—') ?></strong>
                     </div>
                 </div>
 
             </div>
 
-            <button type="button" class="print-recipe" id="print-recipe">
-                <i class="fa-solid fa-print"></i>
-                Print recipe
-            </button>
 
         </div>
 
@@ -170,51 +172,21 @@
                         <h2>Ingredients</h2>
                     </div>
 
-                    <span class="ingredient-count">6 ingredients</span>
+                    <span class="ingredient-count"><?= $ingredient_count ?> ingredient<?= $ingredient_count === 1 ? '' : 's' ?></span>
                 </div>
 
                 <p class="section-description">
-                    Everything you need to make the perfect pancakes.
+                    Everything you need for this recipe.
                 </p>
 
                 <div class="ingredients-list">
-
-                    <label class="ingredient-item">
-                        <input type="checkbox" class="ingredient-check">
-                        <span class="ingredient-amount">150 g</span>
-                        <span class="ingredient-name">All-purpose flour</span>
-                    </label>
-
-                    <label class="ingredient-item">
-                        <input type="checkbox" class="ingredient-check">
-                        <span class="ingredient-amount">200 ml</span>
-                        <span class="ingredient-name">Milk</span>
-                    </label>
-
-                    <label class="ingredient-item">
-                        <input type="checkbox" class="ingredient-check">
-                        <span class="ingredient-amount">1</span>
-                        <span class="ingredient-name">Egg</span>
-                    </label>
-
-                    <label class="ingredient-item">
-                        <input type="checkbox" class="ingredient-check">
-                        <span class="ingredient-amount">1 tbsp</span>
-                        <span class="ingredient-name">Sugar</span>
-                    </label>
-
-                    <label class="ingredient-item">
-                        <input type="checkbox" class="ingredient-check">
-                        <span class="ingredient-amount">1 tsp</span>
-                        <span class="ingredient-name">Baking powder</span>
-                    </label>
-
-                    <label class="ingredient-item">
-                        <input type="checkbox" class="ingredient-check">
-                        <span class="ingredient-amount">20 g</span>
-                        <span class="ingredient-name">Butter</span>
-                    </label>
-
+                    <?php foreach ($ingredients as $ingredient): ?>
+                        <label class="ingredient-item">
+                            <input type="checkbox" class="ingredient-check">
+                            <span class="ingredient-amount"><?= e($ingredient['amount']) ?></span>
+                            <span class="ingredient-name"><?= e($ingredient['ingredient_name']) ?></span>
+                        </label>
+                    <?php endforeach; ?>
                 </div>
 
                 <div class="ingredients-progress">
@@ -224,7 +196,7 @@
                     </div>
 
                     <span id="ingredients-progress-text">
-                        0 of 6 ingredients ready
+                        0 of <?= $ingredient_count ?> ingredients ready
                     </span>
                 </div>
 
@@ -244,46 +216,48 @@
                 </p>
 
                 <div class="instructions-list">
+                    <?php foreach ($steps as $step): ?>
+                        <article class="instruction-step">
+                            <div class="step-number"><?= str_pad((string) $step['step_number'], 2, '0', STR_PAD_LEFT) ?></div>
 
-                    <article class="instruction-step">
-                        <div class="step-number">01</div>
+                            <div>
+                                <h3>Step <?= (int) $step['step_number'] ?></h3>
+                                <p><?= e($step['instruction']) ?></p>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
 
-                        <div>
-                            <h3>Mix the dry ingredients</h3>
-                            <p>
-                                Add the flour, sugar and baking powder to a large
-                                bowl. Mix everything together until evenly combined.
-                            </p>
-                        </div>
-                    </article>
+            </section>
 
-                    <article class="instruction-step">
-                        <div class="step-number">02</div>
+        </div>
 
-                        <div>
-                            <h3>Add the wet ingredients</h3>
-                            <p>
-                                Add the milk and egg. Whisk until you have a smooth
-                                batter. A few small lumps are completely fine.
-                            </p>
-                        </div>
-                    </article>
+    </section>
 
-                    <article class="instruction-step">
-                        <div class="step-number">03</div>
+</main>
 
-                        <div>
-                            <h3>Heat the pan</h3>
-                            <p>
-                                Melt a little butter in a frying pan over medium
-                                heat. Make sure the pan is hot before adding batter.
-                            </p>
-                        </div>
-                    </article>
+<footer>
 
-                    <article class="instruction-step">
-                        <div class="step-number">04</div>
+    <div class="Footer_logo">
+        <img src="./Images/Logo.png" alt="" width="100px">
+    </div>
 
-                        <div>
-                            <h3>Cook the pancakes</h3>
-                            <p>
+    <div class="nav-footer">
+        <a href="./index.php">Home</a>
+        <a href="./recipes.php">Recipes</a>
+        <a href="./soon.php">Community</a>
+    </div>
+
+    <div class="Social_media">
+        <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+
+    <div class="End-text">
+        <p>| Good food. Real expectations!</p>
+    </div>
+
+</footer>
+</body>
+</html>

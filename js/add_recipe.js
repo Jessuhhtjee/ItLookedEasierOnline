@@ -92,12 +92,3 @@ uploadArea.addEventListener("drop", (event) => {
     imageInput.files = transfer.files;
     imageInput.dispatchEvent(new Event("change"));
 });
-
-// Publish form
-createSection.querySelector(".create-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!event.currentTarget.reportValidity()) return;
-
-    alert("Recipe ready to publish. Connect your backend to save it.");
-});

@@ -24,16 +24,34 @@ body {
     max-width: 700px;
     border-radius: 25px;
     padding: 19px 0px 19px 20px;
-    height: 20px;
+    height: 58px;
     margin-bottom: 50px;
     box-sizing: border-box;
+    border: none;
 }
 
 .searchbar input {
     width: 100%;
     min-width: 0;
     border: none;
+    background: transparent;
     font-family: Outfit;
+    font-size: 15px;
+}
+
+.searchbar button {
+    background-color: #718b6a;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 25px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-decoration: none;
+    font-family: Outfit;
+    font-size: 15px;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .hero {
@@ -149,6 +167,9 @@ overflow: hidden;
     align-items: center;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .newsletter_text {
@@ -215,6 +236,28 @@ overflow: hidden;
     justify-items: center;
 }
 
+.popular-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 40px auto 0;
+    gap: 16px;
+}
+
+.popular-header .pr {
+    margin: 0;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.popular-header a {
+    color: #718b6a;
+    text-decoration: none;
+    font-family: Outfit;
+    white-space: nowrap;
+}
+
 .pr {
     display: flex;
     justify-content: center;
@@ -225,6 +268,7 @@ overflow: hidden;
 }
 
 .PR_card {
+    display: block;
     background-color: white;
     width: 100%;
     max-width: 330px;
@@ -233,7 +277,38 @@ overflow: hidden;
     font-family: Outfit;
     color: #77736D;
     overflow: hidden;
+    text-decoration: none;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.PR_card:hover {
+    transform: translateY(-3px);
+    box-shadow: rgba(149, 157, 165, 0.28) 0px 12px 28px;
+}
+
+.home-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 30px 20px;
+    text-align: center;
+    font-family: Outfit;
+    color: #77736D;
+}
+
+.home-empty-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #718b6a;
+    color: white;
+    text-decoration: none;
+    font-family: Outfit;
+    padding: 10px 24px;
+    border-radius: 25px;
 }
 
 .PR_card h2 {
@@ -403,5 +478,23 @@ overflow: hidden;
     .PR_card {
         width: 100%;
         max-width: 330px;
+    }
+
+    .popular-header {
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .searchbar {
+        height: auto;
+        min-height: 58px;
+        padding: 12px 12px 12px 16px;
+    }
+
+    .searchbar button {
+        padding: 10px 22px;
     }
 }

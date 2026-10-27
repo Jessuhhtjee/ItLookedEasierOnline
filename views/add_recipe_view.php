@@ -6,13 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add recipe | ItLookedEasierOnline</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/add_recipe.css">
-    <script src="../js/add_recipe.js" defer></script>
+    <link rel="stylesheet" href="./css/add_recipe.css">
+    <script src="./js/add_recipe.js" defer></script>
 </head>
 <body>
 <header class="header_desktop">
@@ -20,15 +20,15 @@
     <div class="header-left">
 
         <div class="header_logo">
-            <a href="../index.php">
-                <img src="../Images/Logo.png" alt="" width="70px">
+            <a href="./index.php">
+                <img src="./Images/Logo.png" alt="" width="70px">
             </a>
         </div>
 
         <nav>
-            <a href="../index.php">Home</a>
-            <a href="views/recipes_view.php">Recipes</a>
-            <a href="">Community</a>
+            <a href="./index.php">Home</a>
+            <a href="./recipes.php">Recipes</a>
+            <a href="./soon.php">Community</a>
         </nav>
 
     </div>
@@ -40,12 +40,12 @@
             <input type="text" placeholder="Search recipes...">
         </div>
 
-        <a id="wishlist" href="soon_page.php">
+        <a id="wishlist" href="./soon.php">
             <i class="fa-regular fa-heart"></i>
         </a>
 
-        <a href="login-register.php" id="Login_button">
-            Sign in
+        <a href="./profile.php" id="Login_button">
+            Profile
         </a>
 
     </div>
@@ -55,17 +55,17 @@
 
 <header class="header_phone">
 
-    <a href="">
+    <a href="./index.php">
         <i class="fa-solid fa-house"></i>
         <p>Home</p>
     </a>
 
-    <a href="">
+    <a href="./recipes.php">
         <i class="fa-solid fa-magnifying-glass"></i>
         <p>Recipes</p>
     </a>
 
-    <a href="">
+    <a href="./profile.php">
         <i class="fa-solid fa-user"></i>
         <p>Profile</p>
     </a>
@@ -80,7 +80,11 @@
         <p>Share your favorite recipe with the community.</p>
     </div>
 
-    <form class="create-form">
+    <?php if (!empty($message)): ?>
+        <p class="form-error" style="color:#b00020; margin-bottom:1rem;"><?= e($message) ?></p>
+    <?php endif; ?>
+
+    <form class="create-form" method="post" action="./add-recipe.php" enctype="multipart/form-data">
         <div class="create-column">
 
             <div class="create-card">
@@ -88,13 +92,14 @@
 
                 <div class="form-group">
                     <label for="recipe-title">Recipe Title</label>
-                    <input type="text" id="recipe-title" name="title" placeholder="E.g. The Perfect Pancakes" required>
+                    <input type="text" id="recipe-title" name="title" placeholder="E.g. The Perfect Pancakes" required
+                           value="<?= e($form_data['title'] ?? '') ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="recipe-description">Short Description</label>
-                    <textarea id="recipe-description" name="description" maxlength="200" placeholder="A short and tasty description of your recipe..." rows="4"></textarea>
-                    <span class="character-count">0/200</span>
+                    <textarea id="recipe-description" name="description" maxlength="200" placeholder="A short and tasty description of your recipe..." rows="4"><?= e($form_data['description'] ?? '') ?></textarea>
+                    <span class="character-count"><?= strlen($form_data['description'] ?? '') ?>/200</span>
                 </div>
 
                 <div class="form-grid-3">
@@ -102,40 +107,41 @@
                         <label for="prep-time">Prep Time</label>
                         <select id="prep-time" name="prepTime">
                             <option value="">Select prep time</option>
-                            <option value="under-15">Under 15 minutes</option>
-                            <option value="15-30">15 - 30 Minutes</option>
-                            <option value="30-60">30 - 60 minutes</option>
-                            <option value="over-60">Over 1 hour</option>
+                            <option value="under-15" <?= ($form_data['prepTime'] ?? '') === 'under-15' ? 'selected' : '' ?>>Under 15 minutes</option>
+                            <option value="15-30" <?= ($form_data['prepTime'] ?? '') === '15-30' ? 'selected' : '' ?>>15 - 30 Minutes</option>
+                            <option value="30-60" <?= ($form_data['prepTime'] ?? '') === '30-60' ? 'selected' : '' ?>>30 - 60 minutes</option>
+                            <option value="over-60" <?= ($form_data['prepTime'] ?? '') === 'over-60' ? 'selected' : '' ?>>Over 1 hour</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="difficulty">Difficulty</label>
                         <select id="difficulty" name="difficulty">
-                            <option value="easy">Easy</option>
                             <option value="">Select difficulty</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
-                            <option value="apparentlyimpossible">Apparently Impossible</option>
+                            <option value="easy" <?= ($form_data['difficulty'] ?? '') === 'easy' ? 'selected' : '' ?>>Easy</option>
+                            <option value="medium" <?= ($form_data['difficulty'] ?? '') === 'medium' ? 'selected' : '' ?>>Medium</option>
+                            <option value="hard" <?= ($form_data['difficulty'] ?? '') === 'hard' ? 'selected' : '' ?>>Hard</option>
+                            <option value="apparentlyimpossible" <?= ($form_data['difficulty'] ?? '') === 'apparentlyimpossible' ? 'selected' : '' ?>>Apparently Impossible</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="servings">Servings</label>
-                        <input type="number" id="servings" name="servings" min="1" placeholder="E.g. 2 servings">
+                        <input type="number" id="servings" name="servings" min="1" placeholder="E.g. 2 servings"
+                               value="<?= e($form_data['servings'] ?? '') ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="categories">Categories</label>
                         <select id="categories" name="categories">
                             <option value="">Select category</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
-                            <option value="dessert">Dessert</option>
-                            <option value="snacks">Snacks</option>
-                            <option value="vegetarian">Vegetarian</option>
-                            <option value="quick&easy">Quick & Easy</option>
+                            <option value="breakfast" <?= ($form_data['categories'] ?? '') === 'breakfast' ? 'selected' : '' ?>>Breakfast</option>
+                            <option value="lunch" <?= ($form_data['categories'] ?? '') === 'lunch' ? 'selected' : '' ?>>Lunch</option>
+                            <option value="dinner" <?= ($form_data['categories'] ?? '') === 'dinner' ? 'selected' : '' ?>>Dinner</option>
+                            <option value="dessert" <?= ($form_data['categories'] ?? '') === 'dessert' ? 'selected' : '' ?>>Dessert</option>
+                            <option value="snacks" <?= ($form_data['categories'] ?? '') === 'snacks' ? 'selected' : '' ?>>Snacks</option>
+                            <option value="vegetarian" <?= ($form_data['categories'] ?? '') === 'vegetarian' ? 'selected' : '' ?>>Vegetarian</option>
+                            <option value="quick&easy" <?= ($form_data['categories'] ?? '') === 'quick&easy' ? 'selected' : '' ?>>Quick & Easy</option>
                         </select>
                     </div>
 
@@ -143,11 +149,11 @@
                         <label for="dietary">Dietary Preferences</label>
                         <select id="dietary" name="dietary">
                             <option value="">Select preference</option>
-                            <option value="vegetarian">Vegetarian</option>
-                            <option value="vegan">Vegan</option>
-                            <option value="gluten-free">Gluten-free</option>
-                            <option value="dairy-free">Dairy-free</option>
-                            <option value="none">None</option>
+                            <option value="vegetarian" <?= ($form_data['dietary'] ?? '') === 'vegetarian' ? 'selected' : '' ?>>Vegetarian</option>
+                            <option value="vegan" <?= ($form_data['dietary'] ?? '') === 'vegan' ? 'selected' : '' ?>>Vegan</option>
+                            <option value="gluten-free" <?= ($form_data['dietary'] ?? '') === 'gluten-free' ? 'selected' : '' ?>>Gluten-free</option>
+                            <option value="dairy-free" <?= ($form_data['dietary'] ?? '') === 'dairy-free' ? 'selected' : '' ?>>Dairy-free</option>
+                            <option value="none" <?= ($form_data['dietary'] ?? '') === 'none' ? 'selected' : '' ?>>None</option>
                         </select>
                     </div>
                 </div>
@@ -251,7 +257,7 @@
 
     <div class="Footer_logo">
 
-        <img src="../Images/Logo.png"
+        <img src="./Images/Logo.png"
              alt=""
              width="100px">
 
@@ -260,9 +266,9 @@
 
     <div class="nav-footer">
 
-        <a href="">Home</a>
-        <a href="">Recipes</a>
-        <a href="">Community</a>
+        <a href="./index.php">Home</a>
+        <a href="./recipes.php">Recipes</a>
+        <a href="./soon.php">Community</a>
 
     </div>
 

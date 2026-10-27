@@ -16,5 +16,5 @@ try {
     $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     error_log("Database connection failed: " . $e->getMessage());
-    die("Databaseverbinding mislukt. Probeer het later opnieuw.");
+    die("Database connection failed. Please try again later.");
 }

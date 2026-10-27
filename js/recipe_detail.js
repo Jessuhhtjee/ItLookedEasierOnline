@@ -6,8 +6,12 @@ function updateIngredientProgress() {
     const total = ingredientChecks.length;
     const checked = document.querySelectorAll(".ingredient-check:checked").length;
 
-    progressFill.style.width = `${total ? (checked / total) * 100 : 0}%`;
-    progressText.textContent = `${checked} of ${total} ingredients ready`;
+    if (progressFill) {
+        progressFill.style.width = `${total ? (checked / total) * 100 : 0}%`;
+    }
+    if (progressText) {
+        progressText.textContent = `${checked} of ${total} ingredients ready`;
+    }
 }
 
 ingredientChecks.forEach(check => {
@@ -16,18 +20,16 @@ ingredientChecks.forEach(check => {
 
 const saveButton = document.getElementById("save-recipe");
 
-saveButton.addEventListener("click", () => {
-    const saved = saveButton.classList.toggle("saved");
-    const icon = saveButton.querySelector("i");
+if (saveButton) {
+    saveButton.addEventListener("click", () => {
+        const saved = saveButton.classList.toggle("saved");
+        const icon = saveButton.querySelector("i");
 
-    icon.classList.toggle("fa-regular", !saved);
-    icon.classList.toggle("fa-solid", saved);
+        icon.classList.toggle("fa-regular", !saved);
+        icon.classList.toggle("fa-solid", saved);
 
-    saveButton.setAttribute("aria-pressed", String(saved));
-});
-
-document.getElementById("print-recipe").addEventListener("click", () => {
-    window.print();
-});
+        saveButton.setAttribute("aria-pressed", String(saved));
+    });
+}
 
 updateIngredientProgress();

@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $password = $_POST["password"] ?? "";
 
             if ($username === "" || $email === "" || $password === "") {
-                $message = "Vul alle velden in.";
+                $message = "Please fill in all fields.";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $message = "Voer een geldig e-mailadres in.";
+                $message = "Please enter a valid email address.";
             } else {
 
                 $check_email = $conn->prepare(
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $password = $_POST["password"] ?? "";
 
             if ($email === "" || $password === "") {
-                $message = "Vul alle velden in.";
+                $message = "Please fill in all fields.";
             } else {
 
                 $stmt = $conn->prepare(
@@ -81,16 +81,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     exit;
                 }
 
-                $message = "Ongeldige e-mail of wachtwoord.";
+                $message = "Invalid email or password.";
             }
 
         } else {
-            $message = "Ongeldige actie.";
+            $message = "Invalid action.";
         }
 
     } catch (PDOException $e) {
         error_log($e->getMessage());
-        $message = "Databasefout: " . $e->getMessage();
+        $message = "Database error: " . $e->getMessage();
     }
 }
 

@@ -25,15 +25,15 @@
         <div class="header-left">
 
             <div class="header_logo">
-                <a href="index.php">
+                <a href="./index.php">
                     <img src="./Images/Logo.png" alt="" width="70px">
                 </a>
             </div>
 
             <nav>
-                <a href="index.php">Home</a>
-                <a href="views/recipes_view.php">Recipes</a>
-                <a href="views/soon_page.php">Community</a>
+                <a href="./index.php">Home</a>
+                <a href="./recipes.php">Recipes</a>
+                <a href="./soon.php">Community</a>
             </nav>
 
         </div>
@@ -45,12 +45,12 @@
                 <input type="text" placeholder="Search recipes...">
             </div>
 
-            <a id="wishlist" href="soon_page.php">
+            <a id="wishlist" href="./soon.php">
                 <i class="fa-regular fa-heart"></i>
             </a>
 
-            <a id="Login_button" href="<?= isset($_SESSION['user_id']) ? 'profile.php' : 'login-register.php' ?>">
-                Profile
+            <a id="Login_button" href="<?= isset($_SESSION['user_id']) ? './profile.php' : './login-register.php' ?>">
+                <?= isset($_SESSION['user_id']) ? 'Profile' : 'Sign in' ?>
             </a>
 
         </div>
@@ -60,17 +60,17 @@
 
     <header class="header_phone">
 
-        <a href="">
+        <a href="./index.php">
             <i class="fa-solid fa-house"></i>
             <p>Home</p>
         </a>
 
-        <a href="">
+        <a href="./recipes.php">
             <i class="fa-solid fa-magnifying-glass"></i>
             <p>Recipes</p>
         </a>
 
-        <a href="">
+        <a href="<?= isset($_SESSION['user_id']) ? './profile.php' : './login-register.php' ?>">
             <i class="fa-solid fa-user"></i>
             <p>Profile</p>
         </a>
@@ -91,16 +91,17 @@
         </div>
 
 
-        <div class="searchbar">
+        <form class="searchbar" action="./recipes.php" method="get">
 
             <i class="fa-solid fa-magnifying-glass"></i>
 
             <input type="text"
+                   name="q"
                    placeholder="What are you trying to cook?">
 
-            <a href="">Search</a>
+            <button type="submit">Search</button>
 
-        </div>
+        </form>
 
 
         <div class="hero-bottom">
@@ -131,8 +132,8 @@
 
             <h5>Browse by Category</h5>
 
-            <a href="">
-                View all categories ->
+            <a href="./recipes.php">
+                View all recipes ->
             </a>
 
         </div>
@@ -140,174 +141,88 @@
 
         <div class="category-bottom">
 
-            <div class="cat-card">
+            <a href="./recipes.php?category=breakfast" class="cat-card">
                 <i class="fa-solid fa-mug-saucer"></i>
                 <p>Breakfast</p>
-            </div>
+            </a>
 
-            <div class="cat-card">
+            <a href="./recipes.php?category=lunch" class="cat-card">
                 <i class="fa-solid fa-bread-slice"></i>
                 <p>Lunch</p>
-            </div>
+            </a>
 
-            <div class="cat-card">
+            <a href="./recipes.php?category=dinner" class="cat-card">
                 <i class="fa-solid fa-pizza-slice"></i>
-                <p>Diner</p>
-            </div>
+                <p>Dinner</p>
+            </a>
 
-            <div class="cat-card">
+            <a href="./recipes.php?category=dessert" class="cat-card">
                 <i class="fa-solid fa-ice-cream"></i>
-                <p>Deserts</p>
-            </div>
+                <p>Desserts</p>
+            </a>
 
-            <div class="cat-card cat-snacks">
+            <a href="./recipes.php?category=snacks" class="cat-card cat-snacks">
                 <i class="fa-solid fa-cookie-bite"></i>
                 <p>Snacks</p>
-            </div>
+            </a>
 
-            <div class="cat-card cat-desktop">
+            <a href="./recipes.php?category=vegetarian" class="cat-card cat-desktop">
                 <i class="fa-solid fa-seedling"></i>
                 <p>Vegetarian</p>
-            </div>
+            </a>
 
-            <div class="cat-card cat-desktop">
-                <i class="fa-solid fa-cookie-bite"></i>
+            <a href="./recipes.php?category=quick-easy" class="cat-card cat-desktop">
+                <i class="fa-solid fa-bolt"></i>
                 <p>Quick & easy</p>
-            </div>
+            </a>
 
         </div>
 
     </div>
 
 
-    <h1 class="pr">Populair Recipes</h1>
+    <div class="popular-header">
+        <h1 class="pr">Popular Recipes</h1>
+        <a href="./recipes.php">View all</a>
+    </div>
 
 
     <div class="Popular_Recipes">
 
-        <div class="PR_card">
-
-            <img src="./Images/card-template.jpg" alt="">
-
-            <h2>The simple hamburger</h2>
-
-            <p>Just a few layers, the said.</p>
-
-            <div class="PR-bot">
-
-                <div class="pr-stats">
-                    <i class="fa-regular fa-clock"></i>
-                    <p>1 hr 20 min</p>
-                </div>
-
-                <div class="pr-stats">
-                    <i class="fa-solid fa-trophy"></i>
-                    <p>Medium</p>
-                </div>
-
+        <?php if (empty($popular_recipes)): ?>
+            <div class="home-empty">
+                <p>No recipes yet. Be the first to add one!</p>
+                <a class="home-empty-btn" href="<?= isset($_SESSION['user_id']) ? './add-recipe.php' : './login-register.php' ?>">
+                    <?= isset($_SESSION['user_id']) ? 'Add a recipe' : 'Sign in to add one' ?>
+                </a>
             </div>
+        <?php else: ?>
+            <?php foreach ($popular_recipes as $recipe): ?>
+                <a class="PR_card" href="./recipe.php?id=<?= (int) $recipe['id'] ?>">
 
-        </div>
+                    <img src="./<?= e(recipe_image_src($recipe['image'] ?? null)) ?>" alt="">
 
+                    <h2><?= e($recipe['title']) ?></h2>
 
-        <div class="PR_card">
+                    <p><?= e($recipe['description'] ?: 'No description yet.') ?></p>
 
-            <img src="./Images/card-template.jpg" alt="">
+                    <div class="PR-bot">
 
-            <h2>The simple hamburger</h2>
+                        <div class="pr-stats">
+                            <i class="fa-regular fa-clock"></i>
+                            <p><?= e(format_prep_time($recipe['prep_time'] ?? null)) ?></p>
+                        </div>
 
-            <p>Just a few layers, the said.</p>
+                        <div class="pr-stats">
+                            <i class="fa-solid fa-trophy"></i>
+                            <p><?= e(format_label($recipe['difficulty'] ?? null) ?: '—') ?></p>
+                        </div>
 
-            <div class="PR-bot">
+                    </div>
 
-                <div class="pr-stats">
-                    <i class="fa-regular fa-clock"></i>
-                    <p>1 hr 20 min</p>
-                </div>
-
-                <div class="pr-stats">
-                    <i class="fa-solid fa-trophy"></i>
-                    <p>Medium</p>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="PR_card">
-
-            <img src="./Images/card-template.jpg" alt="">
-
-            <h2>The simple hamburger</h2>
-
-            <p>Just a few layers, the said.</p>
-
-            <div class="PR-bot">
-
-                <div class="pr-stats">
-                    <i class="fa-regular fa-clock"></i>
-                    <p>1 hr 20 min</p>
-                </div>
-
-                <div class="pr-stats">
-                    <i class="fa-solid fa-trophy"></i>
-                    <p>Medium</p>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="PR_card">
-
-            <img src="./Images/card-template.jpg" alt="">
-
-            <h2>The simple hamburger</h2>
-
-            <p>Just a few layers, the said.</p>
-
-            <div class="PR-bot">
-
-                <div class="pr-stats">
-                    <i class="fa-regular fa-clock"></i>
-                    <p>1 hr 20 min</p>
-                </div>
-
-                <div class="pr-stats">
-                    <i class="fa-solid fa-trophy"></i>
-                    <p>Medium</p>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="PR_card">
-
-            <img src="./Images/card-template.jpg" alt="">
-
-            <h2>The simple hamburger</h2>
-
-            <p>Just a few layers, the said.</p>
-
-            <div class="PR-bot">
-
-                <div class="pr-stats">
-                    <i class="fa-regular fa-clock"></i>
-                    <p>1 hr 20 min</p>
-                </div>
-
-                <div class="pr-stats">
-                    <i class="fa-solid fa-trophy"></i>
-                    <p>Medium</p>
-                </div>
-
-            </div>
-
-        </div>
+                </a>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
     </div>
 
@@ -331,9 +246,9 @@
             <i class="fa-regular fa-envelope"></i>
 
             <input type="text"
-                   placeholder="Your e-mail adres:">
+                   placeholder="Your email address:">
 
-            <a href="">SignUp</a>
+            <a href="./soon.php">Sign up</a>
 
         </div>
 
@@ -353,9 +268,9 @@
 
         <div class="nav-footer">
 
-            <a href="">Home</a>
-            <a href="">Recipes</a>
-            <a href="">Community</a>
+            <a href="./index.php">Home</a>
+            <a href="./recipes.php">Recipes</a>
+            <a href="./soon.php">Community</a>
 
         </div>
 
