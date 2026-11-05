@@ -39,12 +39,12 @@
 
     <div class="header-right">
 
-        <div class="search_recipes">
+        <form class="search_recipes" action="./recipes.php" method="get" role="search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search recipes...">
-        </div>
+            <input type="search" name="q" placeholder="Search recipes..." aria-label="Search recipes" value="<?= e($search_q ?? '') ?>">
+        </form>
 
-        <a id="wishlist" href="./soon.php">
+        <a id="wishlist" href="<?= isset($_SESSION['user_id']) ? './profile.php#saved-recipes' : './login-register.php' ?>">
             <i class="fa-regular fa-heart"></i>
         </a>
 
@@ -90,8 +90,10 @@
             <i class="fa-solid fa-magnifying-glass"></i>
 
             <input
-                    type="text"
+                    type="search"
                     placeholder="Search recipes..."
+                    value="<?= e($search_q ?? '') ?>"
+                    aria-label="Search recipes"
             >
 
         </div>

@@ -49,4 +49,18 @@ try {
     exit;
 }
 
+$is_saved = false;
+if (isset($_SESSION['user_id'])) {
+    try {
+        $saved_stmt = $conn->prepare(
+            'SELECT `id` FROM `Ileo_Wishlist` WHERE `user_id` = ? AND `recipe_id` = ?'
+        );
+        $saved_stmt->execute([$_SESSION['user_id'], $recipe_id]);
+        $is_saved = (bool) $saved_stmt->fetch();
+    } catch (PDOException $e) {
+        error_log($e->getMessage());
+        $is_saved = false;
+    }
+}
+
 include 'views/detail_view.php';

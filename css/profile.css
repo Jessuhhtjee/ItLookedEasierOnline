@@ -329,6 +329,10 @@ body {
     font-size: 14px;
 }
 
+#saved-recipes:target {
+    scroll-margin-top: 24px;
+}
+
 @media (max-width: 900px) {
     .profile-left {
         display: none;

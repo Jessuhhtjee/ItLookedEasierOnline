@@ -40,12 +40,12 @@
 
         <div class="header-right">
 
-            <div class="search_recipes">
+            <form class="search_recipes" action="./recipes.php" method="get" role="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Search recipes...">
-            </div>
+                <input type="search" name="q" placeholder="Search recipes..." aria-label="Search recipes">
+            </form>
 
-            <a id="wishlist" href="./soon.php">
+            <a id="wishlist" href="<?= isset($_SESSION['user_id']) ? './profile.php#saved-recipes' : './login-register.php' ?>">
                 <i class="fa-regular fa-heart"></i>
             </a>
 

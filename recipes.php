@@ -5,6 +5,7 @@ require_once 'includes/config.php';
 require_once 'includes/helpers.php';
 
 $active_category = trim($_GET['category'] ?? '');
+$search_q = trim($_GET['q'] ?? '');
 
 $category_aliases = [
     'desserts' => 'dessert',

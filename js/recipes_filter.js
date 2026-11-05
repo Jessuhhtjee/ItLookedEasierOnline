@@ -121,5 +121,10 @@ if (filters && grid) {
         }
     }
 
+    const queryParam = params.get("q");
+    if (queryParam && searchInput) {
+        searchInput.value = queryParam;
+    }
+
     applyFilters();
 }

@@ -43,12 +43,12 @@ $dietary_label = format_label($recipe['dietary_preference'] ?? null);
     </div>
 
     <div class="header-right">
-        <div class="search_recipes">
+        <form class="search_recipes" action="./recipes.php" method="get" role="search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search recipes...">
-        </div>
+            <input type="search" name="q" placeholder="Search recipes..." aria-label="Search recipes">
+        </form>
 
-        <a id="wishlist" href="./soon.php">
+        <a id="wishlist" href="<?= isset($_SESSION['user_id']) ? './profile.php#saved-recipes' : './login-register.php' ?>">
             <i class="fa-regular fa-heart"></i>
         </a>
 
@@ -85,11 +85,13 @@ $dietary_label = format_label($recipe['dietary_preference'] ?? null);
                  alt="<?= e($recipe['title']) ?>">
 
             <button type="button"
-                    class="recipe-save"
+                    class="recipe-save<?= !empty($is_saved) ? ' saved' : '' ?>"
                     id="save-recipe"
-                    aria-label="Save recipe"
-                    aria-pressed="false">
-                <i class="fa-regular fa-heart"></i>
+                    data-recipe-id="<?= (int) $recipe['id'] ?>"
+                    data-logged-in="<?= isset($_SESSION['user_id']) ? '1' : '0' ?>"
+                    aria-label="<?= !empty($is_saved) ? 'Remove from saved recipes' : 'Save recipe' ?>"
+                    aria-pressed="<?= !empty($is_saved) ? 'true' : 'false' ?>">
+                <i class="fa-<?= !empty($is_saved) ? 'solid' : 'regular' ?> fa-heart"></i>
             </button>
         </div>
 

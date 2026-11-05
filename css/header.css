@@ -41,6 +41,12 @@ nav a {
     border-radius: 25px;
     padding: 20px;
     height: 18px;
+    border: none;
+}
+
+.search_recipes i {
+    color: #718B6A;
+    flex-shrink: 0;
 }
 
 .header-left {

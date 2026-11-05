@@ -33,12 +33,12 @@
 
     <div class="header-right">
 
-        <div class="search_recipes">
+        <form class="search_recipes" action="./recipes.php" method="get" role="search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search recipes...">
-        </div>
+            <input type="search" name="q" placeholder="Search recipes..." aria-label="Search recipes">
+        </form>
 
-        <a id="wishlist" href="./soon.php">
+        <a id="wishlist" href="./profile.php#saved-recipes">
             <i class="fa-regular fa-heart"></i>
         </a>
 
@@ -84,7 +84,7 @@
             <p>My recipes</p>
         </a>
 
-        <a href="./soon.php" class="profile-option">
+        <a href="./profile.php#saved-recipes" class="profile-option">
             <i class="fa-regular fa-heart"></i>
             <p>Saved recipes</p>
         </a>
@@ -107,6 +107,7 @@
                     <p>Share recipes that looked easier online.</p>
                     <div class="profile-meta">
                         <span><?= count($my_recipes) ?> recipe<?= count($my_recipes) === 1 ? '' : 's' ?></span>
+                        <span><?= count($saved_recipes) ?> saved</span>
                         <span><?= e($_SESSION['email'] ?? '') ?></span>
                     </div>
                 </div>
@@ -161,14 +162,41 @@
             <a class="add-btn" href="./add-recipe.php">Add Recipe</a>
         </section>
 
-        <section class="saved-recipes">
+        <section class="saved-recipes" id="saved-recipes">
             <div class="saved-header">
                 <div>
-                    <p class="section-eyebrow">COMING SOON</p>
+                    <p class="section-eyebrow">WISHLIST</p>
                     <h3>Saved recipes</h3>
                 </div>
             </div>
-            <p class="saved-copy">Wishlist recipes will land here once saving is ready.</p>
+
+            <div class="mr-lower">
+                <?php if (empty($saved_recipes)): ?>
+                    <div class="empty-recipes">
+                        <i class="fa-regular fa-heart"></i>
+                        <h4>No saved recipes yet</h4>
+                        <p>Tap the heart on a recipe page to save it here.</p>
+                        <a class="add-btn" href="./recipes.php">Browse recipes</a>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($saved_recipes as $recipe): ?>
+                        <a class="mr-card" href="./recipe.php?id=<?= (int) $recipe['id'] ?>">
+                            <img src="./<?= e(recipe_image_src($recipe['image'] ?? null)) ?>"
+                                 alt="<?= e($recipe['title']) ?>">
+                            <div class="mr-card-body">
+                                <h4><?= e($recipe['title']) ?></h4>
+                                <p><?= e($recipe['description'] ?: 'No description yet.') ?></p>
+                                <p class="mr-stats">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <?= e(format_prep_time($recipe['prep_time'] ?? null)) ?>
+                                    <span>·</span>
+                                    <?= e(format_label($recipe['difficulty'] ?? null) ?: '—') ?>
+                                </p>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
         </section>
     </div>
 </div>
